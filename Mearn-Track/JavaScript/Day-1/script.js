@@ -1,2 +1,1 @@
-'use strict'
-let test = 'welcome :)'
+"use strict";
