@@ -57,14 +57,26 @@ console.log("number" + 15 + 3);
 var x = false;
 var y = !!x;
 console.log(y);
-//
+//False
+
+
 10-What is the output of this piece of code
 var x = false;
 console.log(typeof x ==0)
+//False
+
 11- Write a JavaScript code to display in console the odd numbers from 1 to 9
 (use loop)
+*/
+
+for (let i = 1; i < 10; i++) {
+  console.log(i);
+}
+
+/*
 12-On your page, show alert for the user that say “Welcome to my site”, then
 show him prompt ask him to enter his name and write to the page “welcome +
 his name”.
-
 */
+
+alert("welcome To My site");
