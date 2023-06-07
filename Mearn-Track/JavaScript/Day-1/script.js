@@ -69,7 +69,7 @@ console.log(typeof x ==0)
 (use loop)
 */
 
-for (let i = 1; i < 10; i++) {
+for (let i = 1; i < 10; i + 2) {
   console.log(i);
 }
 
@@ -80,3 +80,11 @@ his name”.
 */
 
 alert("welcome To My site");
+
+let guestName;
+
+do {
+  guestName = prompt("Enter Your Name");
+} while (!guestName || !isNaN(guestName));
+
+document.write(`<h1>welcome ${guestName}</h1>`);
