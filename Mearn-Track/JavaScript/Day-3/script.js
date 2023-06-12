@@ -1,20 +1,26 @@
 "use script";
 
-const displayTime = () => alert(`Time IS: ${new Date().toLocaleTimeString()}`);
+// const displayTime = () => alert(`Time IS: ${new Date().toLocaleTimeString()}`);
 
-let win;
+// let win;
 
-const displayWindow = () => {
-  setTimeout(() => {
-    win = window.open("", "MsgWindow", "width=200,height=100");
-    win.document.write(
-      "<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>"
-    );
-  }, 3000);
-};
+// const displayWindow = () => {
+//   setTimeout(() => {
+//     win = window.open("", "MsgWindow", "width=200,height=100");
+//     win.document.write(
+//       "<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>"
+//     );
+//   }, 3000);
+// };
 
-const closeWindow = () => win.close();
+// const closeWindow = () => win.close();
 
+/*
+
+even
+\b[02468]+\b
+
+*/
 ////////////////////////////////////////////////////////////////
 
 let userName;
@@ -34,11 +40,11 @@ do {
 
 do {
   phoneNum = prompt("enter phone number: ");
-} while (!phoneNum.test(phoneNum));
+} while (!phoneNumRegex.test(phoneNum));
 
 do {
   mobileNum = prompt("enter mobile number: ");
-} while (!mobileNum.test(mobileNum));
+} while (!mobileNumRegex.test(mobileNum));
 
 do {
   mail = prompt("enter Email: ");
@@ -46,10 +52,18 @@ do {
 
 do {
   color = prompt("enter Color: ");
-
-  colorCheck = color.toLocaleLowerCase();
 } while (
-  colorCheck !== "red" ||
-  colorCheck !== "green" ||
-  colorCheck !== "blue"
+  color.toLocaleLowerCase() != "red" &&
+  color.toLocaleLowerCase() != "green" &&
+  color.toLocaleLowerCase() != "blue"
+);
+
+document.write(
+  `
+    <div style= color:${color}>
+    <p> Your Name is${userName}</p>
+    <p> your Phone is ${phoneNum} </p>
+    <p> Your mobile is ${mobileNum}</p>
+    <p> your mail is${mail}</p>
+    </div>`
 );
