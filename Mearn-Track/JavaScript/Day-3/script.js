@@ -51,11 +51,8 @@ do {
 
 do {
   color = prompt("enter Color: ");
-} while (
-  color.toLocaleLowerCase() != "red" &&
-  color.toLocaleLowerCase() != "green" &&
-  color.toLocaleLowerCase() != "blue"
-);
+  color = color.toLocaleLowerCase();
+} while (color != "red" && color != "green" && color != "blue");
 
 document.write(
   `
