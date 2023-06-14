@@ -8,3 +8,11 @@ document.addEventListener("keydown", (ev) => {
 document.addEventListener("contextmenu", (ev) => {
   ev.preventDefault();
 });
+
+const input = document.querySelector("#input");
+
+const timer = setTimeout(() => {
+  btn.disabled = true;
+}, 5000);
+
+const stopTimer = clearTimeout(timer);
