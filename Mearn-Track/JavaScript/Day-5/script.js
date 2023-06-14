@@ -9,15 +9,16 @@ document.addEventListener("keydown", (ev) => {
   //     alert("Shift");
   //   } else {
   //   }
-  if (ev.altKey == true) {
-    alert("Alt");
-  } else if (ev.key == "Shift") {
-    alert("Shift");
-  } else if (ev.ctrlKey) {
-    alert("Ctrl");
+  //   if (ev.altKey == true) {
+  //     alert("Alt");
+  //   } else if (ev.key == "Shift") {
+  //     alert("Shift");
+  //   } else if (ev.ctrlKey) {
+  //     alert("Ctrl");
+  if (ev.altKey || ev.ctrlKey || ev.shiftKey) {
+    alert(ev.key);
   } else {
     alert(ev.keyCode);
-    console.log(ev.keyCode);
   }
 });
 
