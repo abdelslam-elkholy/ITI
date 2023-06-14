@@ -20,7 +20,7 @@ function isPalindrome(str) {
   if (caseSen == 1) {
     const reversedStr = str.split("").reverse().join("");
     str === reversedStr
-      ? console.log("The string is not a palindrome.")
+      ? console.log("The string is a palindrome.")
       : console.log("The string is not a palindrome.");
   } else {
     const origStr = str.toLowerCase();

@@ -16,7 +16,6 @@
 // } while (!phoneNum || !mobileNumRegex.test(mobileNum));
 
 const fillingArr = (num) => {
-  // let arr;
   let arr = [];
   let el;
 
@@ -24,15 +23,19 @@ const fillingArr = (num) => {
     el = prompt(`Enter the element number ${i + 1}`);
     arr.push(el);
   }
+
   let sum = 0;
   let multi = 1;
   let div = arr[0];
+
   for (let i = 0; i < arr.length; i++) {
     sum += +arr[i];
     multi *= arr[i];
     div /= arr[i];
   }
+
   div *= arr[0];
+
   document.write(
     `<p style="color: red; font-size: 1.5rem"> sum of 3 values <span style="black: red; font-size: 1rem">${arr.toString(
       "+"
