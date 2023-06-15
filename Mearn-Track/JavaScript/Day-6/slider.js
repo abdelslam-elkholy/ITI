@@ -1,9 +1,9 @@
 "use strict ";
 
-const startBtn = document.querySelector("#start");
-const stopBtn = document.querySelector("#stop");
-const nextBtn = document.querySelector("#next");
-const prevBtn = document.querySelector("#prev");
+const startBtn = document.querySelector(".start");
+const stopBtn = document.querySelector(".stop");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
 const imgTag = document.querySelector("#img");
 const images = [
   "./1.jpg",
