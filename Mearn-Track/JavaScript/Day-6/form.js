@@ -18,9 +18,13 @@ addBtn.addEventListener("click", () => {
     <td>${mail}</td>
     </tr>
     `;
-    tableBody.appendChild(row);
+    tableBody.innerHTML += row;
     form.reset();
   } else {
     alert("Fill Data");
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  tableBody.innerHTML = "";
 });
