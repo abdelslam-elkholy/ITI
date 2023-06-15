@@ -20,8 +20,8 @@
         <input type="email" id="email" required />
       </div>
       <div>
-        <button type="button" onclick="addRow()">Add</button>
-        <button type="button" onclick="resetTable()">Reset</button>
+        <button id="addBtn" type="button">Add</button>
+        <button id="resetBtn" type="button">Reset</button>
       </div>
     </form>
 
@@ -33,6 +33,7 @@
           <th>Email</th>
         </tr>
       </thead>
+      <tbody id="tbody"></tbody>
     </table>
     <script src="./form.js"></script>
   </body>
