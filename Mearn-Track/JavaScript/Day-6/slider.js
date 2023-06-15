@@ -16,12 +16,34 @@ const images = [
 
 let currentIndex = 0;
 let img;
+let isPlaying = false;
+const imagesLength = images.length - 1;
 
 const setImg = () => {
-  img = setInterval(() => imgTag.attributes("src", images[currentIndex]), 1000);
+  imgTag.attributes("src", images[currentIndex]), 1000;
 };
 
 const startShow = () => {
-  currentIndex === images.length - 1 ? (currentIndex = 0) : currentIndex++;
+  if (!isPlaying) {
+    currentIndex === imagesLength ? (currentIndex = 0) : currentIndex++;
+    img = setInterval(setImg(), 1000);
+    isPlaying = true;
+  }
+};
+
+const stopShow = () => {
+  clearInterval(img);
+  isPlaying = false;
+};
+
+const nextShow = () => {
+  clearInterval(img);
+  currentIndex < imagesLength ? currentIndex++ : (currentIndex = 0);
+  setImg();
+};
+
+const prevShow = () => {
+  clearInterval(img);
+  currentIndex == 0 ? (currentIndex = imagesLength) : currentIndex--;
   setImg();
 };
