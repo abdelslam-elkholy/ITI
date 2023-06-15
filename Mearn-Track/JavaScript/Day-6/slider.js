@@ -1,9 +1,9 @@
 "use strict ";
 
-const startBtn = document.querySelector(".start");
-const stopBtn = document.querySelector(".stop");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
+const startBtn = document.querySelector(".startBtn");
+const stopBtn = document.querySelector(".stopBtn");
+const nextBtn = document.querySelector(".nextBtn");
+const prevBtn = document.querySelector(".prevBtn");
 const imgTag = document.querySelector("#img");
 const images = [
   "./1.jpg",
@@ -20,13 +20,16 @@ let isPlaying = false;
 const imagesLength = images.length - 1;
 
 const setImg = () => {
-  imgTag.attributes("src", images[currentIndex]), 1000;
+  imgTag.setAttribute("src", images[currentIndex]);
 };
 
 const startShow = () => {
   if (!isPlaying) {
     currentIndex === imagesLength ? (currentIndex = 0) : currentIndex++;
-    img = setInterval(setImg(), 1000);
+    img = setInterval(() => {
+      setImg();
+      currentIndex++;
+    }, 1000);
     isPlaying = true;
   }
 };
@@ -47,3 +50,8 @@ const prevShow = () => {
   currentIndex == 0 ? (currentIndex = imagesLength) : currentIndex--;
   setImg();
 };
+
+startBtn.addEventListener("click", startShow);
+stopBtn.addEventListener("click", stopShow);
+nextBtn.addEventListener("click", nextShow);
+prevBtn.addEventListener("click", prevShow);
