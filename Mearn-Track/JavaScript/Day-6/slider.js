@@ -17,19 +17,23 @@ const images = [
 let currentIndex = 0;
 let img;
 let isPlaying = false;
-const imagesLength = images.length - 1;
+const imagesLength = images.length;
 
 const setImg = () => {
+  currentIndex === imagesLength ? (currentIndex = 0) : currentIndex;
   imgTag.setAttribute("src", images[currentIndex]);
 };
 
 const startShow = () => {
   if (!isPlaying) {
-    currentIndex === imagesLength ? (currentIndex = 0) : currentIndex++;
+    currentIndex = 0;
+    setImg();
+
     img = setInterval(() => {
-      setImg();
       currentIndex++;
+      setImg();
     }, 1000);
+
     isPlaying = true;
   }
 };
@@ -37,17 +41,24 @@ const startShow = () => {
 const stopShow = () => {
   clearInterval(img);
   isPlaying = false;
+  // currentIndex = 0;
+  // setImg();
 };
 
 const nextShow = () => {
-  clearInterval(img);
+  if (isPlaying) {
+    stopShow();
+  }
+
   currentIndex < imagesLength ? currentIndex++ : (currentIndex = 0);
   setImg();
 };
 
 const prevShow = () => {
-  clearInterval(img);
-  currentIndex == 0 ? (currentIndex = imagesLength) : currentIndex--;
+  if (isPlaying) {
+    stopShow();
+  }
+  currentIndex == 0 ? (currentIndex = imagesLength - 1) : currentIndex--;
   setImg();
 };
 
