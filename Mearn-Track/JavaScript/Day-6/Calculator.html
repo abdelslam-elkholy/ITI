@@ -201,6 +201,17 @@
       text.addEventListener("input", () => {
         text.value = text.value.replace(/\D/g, "");
       });
+
+      let lastChar = answerInput.value.charAt(answerInput.value.length - 1);
+      let prevChar = answerInput.value.charAt(answerInput.value.length - 2);
+      if (
+        prevChar == "-" ||
+        prevChar == "+" ||
+        prevChar == "*" ||
+        prevChar == "/"
+      ) {
+        if (lastChar == "-") answerInput.value += value;
+      }
     </script>
   </body>
 </html>

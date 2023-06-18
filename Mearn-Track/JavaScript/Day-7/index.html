@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="band">Choose Band:- </label>
+    <select id="band" onchange="getArtistsData()">
+      <option value="beatles">beatles</option>
+      <option value="stones">stones</option>
+      <option value="genesis">genesis</option>
+      <option value="eagles">eagles</option>
+    </select>
+
+    <label for="artist">Choose Artist:-</label>
+    <select id="artist" onchange="openArtistPage()"></select>
+    <script src="./script.js"></script>
+  </body>
+</html>
