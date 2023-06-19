@@ -32,11 +32,16 @@ const hasCoocie = (name) => {
   return coockie !== "";
 };
 
+let fname;
+let age;
+let gender;
+let color;
+
 submitBtn.addEventListener("click", () => {
-  const fname = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
-  const gender = document.querySelector('input[name="gender"]:checked').value;
-  const color = document.getElementById("colors").value;
+  fname = document.getElementById("name").value;
+  age = document.getElementById("age").value;
+  gender = document.querySelector('input[name="gender"]:checked').value;
+  color = document.getElementById("colors").value;
 
   console.log(fname, age, gender, color);
 
