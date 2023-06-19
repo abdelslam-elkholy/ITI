@@ -41,29 +41,29 @@
     </style>
   </head>
   <body>
-    <label for="name">Enter Your Name</label>
-    <input type="text" id="name" />
-    <label for="age">Enter Your Age</label>
-    <input type="number" id="age" />
-    <div class="imgs-container">
-      <label for="gender">
-        <input type="radio" id="gender" name="gender" value="male" />
-        <img src="1.jpeg" alt=""
-      /></label>
-      <label for="gender">
-        <input type="radio" id="gender" name="gender" value="female" />
-        <img src="1.jpeg" alt=""
-      /></label>
+    <div class="myDiv">
+      <label for="name">Enter Your Name</label>
+      <input type="text" id="name" />
+      <label for="age">Enter Your Age</label>
+      <input type="number" id="age" />
+      <div class="imgs-container">
+        <label for="gender">
+          <input type="radio" id="gender" name="gender" value="male" />
+          <img src="./Img/1.jpeg" alt=""
+        /></label>
+        <label for="gender">
+          <input type="radio" id="gender" name="gender" value="female" />
+          <img src="./Img/2.jpeg" alt=""
+        /></label>
+      </div>
+      <label for="colors">Select Your Color</label>
+      <select name="colors" id="colors">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+      <button id="submit">Submit</button>
     </div>
-    <label for="colors">Select Your Color</label>
-    <select name="colors" id="colors">
-      <option value="red">Red</option>
-      <option value="blue">Blue</option>
-      <option value="black">Black</option>
-      <option value="green">Green</option>
-    </select>
-    <input type="submit" value="submit" id="submit" />
-
     <script src="task.js"></script>
   </body>
 </html>

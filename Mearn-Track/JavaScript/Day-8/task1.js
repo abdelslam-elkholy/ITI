@@ -1,14 +1,4 @@
 "use strict";
-// const btn = document.getElementById("submit");
-// let date = new Date();
-// date = date.getDate() + 3;
-// console.log(date);
-
-// // const setCookFun = function (key, value) {};
-
-// const setCookie = function (key, val) {
-//   document.cookie = `${key} = ${val} ; expires = ${date}`;
-// };
 
 // btn.addEventListener("click", function () {
 //   const nameU = document.getElementById("name");
@@ -21,7 +11,7 @@
 //   setCookie("color", color.value);
 // });
 
-// // CookieLibrary.js
+const submitBtn = document.getElementById("submit");
 
 const setCookie = function (key, val, date) {
   date && (date = new Date().getDate() + 3);
