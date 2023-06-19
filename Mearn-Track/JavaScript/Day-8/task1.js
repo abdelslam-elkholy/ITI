@@ -28,7 +28,12 @@ const setCookie = function (key, val, date) {
   document.cookie = `${key} = ${val} ; expires = ${date}`;
 };
 
-const getCookie = (name) => {};
+const getCookie = (name) => {
+  let coockie = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(name))
+    ?.split("=")[1];
+};
 
 var CookieLibrary = {
   getCookie: function (cookieName) {

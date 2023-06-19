@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="task.css" />
     <title>Task</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
+      .myDiv {
+        display: flex;
+        flex-direction: column;
+        width: 40rem;
+        /* align-items: center; */
+        justify-content: center;
+      }
+
+      #submit {
+        cursor: pointer;
+        border: none;
+        width: 10rem;
+        padding: 0.5rem 2rem;
+        align-self: center;
+        margin-top: 1rem;
+        background-color: green;
+        box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.192);
+        color: aliceblue;
+        transition: all 0.2s;
+      }
+      #submit:active {
+        outline: none;
+        border: none;
+        transform: translateY(-3px);
+      }
+    </style>
   </head>
   <body>
     <label for="name">Enter Your Name</label>
@@ -15,11 +48,11 @@
     <div class="imgs-container">
       <label for="gender">
         <input type="radio" id="gender" name="gender" value="male" />
-        <img src="Img/WhatsApp Image 2022-05-15 at 7.16.05 PM.jpeg" alt=""
+        <img src="1.jpeg" alt=""
       /></label>
       <label for="gender">
         <input type="radio" id="gender" name="gender" value="female" />
-        <img src="Img/WhatsApp Image 2022-05-15 at 7.23.15 PM.jpeg" alt=""
+        <img src="1.jpeg" alt=""
       /></label>
     </div>
     <label for="colors">Select Your Color</label>
