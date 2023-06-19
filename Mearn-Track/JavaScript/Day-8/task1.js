@@ -35,6 +35,10 @@ const getCookie = (name) => {
     ?.split("=")[1];
 };
 
+const deleteCookie = (name) => {
+  document.cookie = `${name} =; expires = expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+};
+
 var CookieLibrary = {
   getCookie: function (cookieName) {
     var name = cookieName + "=";
