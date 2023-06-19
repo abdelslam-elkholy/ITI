@@ -39,4 +39,12 @@ submitBtn.addEventListener("click", () => {
   const color = document.getElementById("colors").value;
 
   console.log(fname, age, gender, color);
+
+  if (fname && age && gender && color) {
+    setCookie("name", fname);
+    setCookie("age", age);
+    setCookie("gender", gender);
+    setCookie("color", color);
+    location.href();
+  }
 });
