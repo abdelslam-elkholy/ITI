@@ -1,16 +1,5 @@
 "use strict";
 
-// btn.addEventListener("click", function () {
-//   const nameU = document.getElementById("name");
-//   const age = document.getElementById("age");
-//   const gender = document.querySelector('input[name="gender"]:checked');
-//   const color = document.getElementById("colors");
-//   setCookie("username", nameU.value);
-//   setCookie("age", age.value);
-//   setCookie("gender", gender.value);
-//   setCookie("color", color.value);
-// });
-
 const submitBtn = document.getElementById("submit");
 
 const setCookie = function (key, val, date) {
@@ -53,3 +42,5 @@ submitBtn.addEventListener("click", () => {
     location.href = "./welcome.html";
   }
 });
+
+const displayData = () => {};
