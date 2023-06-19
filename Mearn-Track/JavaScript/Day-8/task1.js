@@ -45,6 +45,6 @@ submitBtn.addEventListener("click", () => {
     setCookie("age", age);
     setCookie("gender", gender);
     setCookie("color", color);
-    location.href();
+    location.href = "./welcome.html";
   }
 });
