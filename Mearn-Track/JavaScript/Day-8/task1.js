@@ -23,9 +23,11 @@
 
 // // CookieLibrary.js
 
-const setCookie = function (key, val) {
+const setCookie = function (key, val, date) {
+  date && (date = new Date().getDate() + 3);
   document.cookie = `${key} = ${val} ; expires = ${date}`;
 };
+
 const getCookie = (name) => {};
 
 var CookieLibrary = {
