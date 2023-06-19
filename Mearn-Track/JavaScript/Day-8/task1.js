@@ -31,3 +31,12 @@ const hasCoocie = (name) => {
   let coockie = document.cookie.split("; ").find((row) => row.startsWith(name));
   return coockie !== "";
 };
+
+submitBtn.addEventListener("click", () => {
+  const fname = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const color = document.getElementById("colors").value;
+
+  console.log(fname, age, gender, color);
+});
