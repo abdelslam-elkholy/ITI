@@ -31,4 +31,10 @@ function reverse1(args) {
   return backWards;
 }
 
+function reverse2(args) {
+  const newArr = Array.from(arguments);
+
+  console.log(newArr.reverse());
+}
 reverse1(1, 2, 3, 4);
+reverse2(1, 2, 3, 4);

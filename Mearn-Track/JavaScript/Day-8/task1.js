@@ -3,13 +3,15 @@
 // const submitBtn = document.getElementById("submit");
 
 const setCookie = function (key, val, date) {
-  date && (date = new Date().getDate() + 3);
+  !date && (date = new Date().getDate() + 3);
   document.cookie = `${key} = ${val} ; expires = ${date}`;
 };
 
-const hasCoocie = (name) => {
+const hasCookie = (name) => {
   let coockie = document.cookie.split("; ").find((row) => row.startsWith(name));
-  return coockie !== "";
+  console.log(coockie);
+
+  return coockie ? coockie : 0;
 };
 
 const getCookie = (name) => {
@@ -17,12 +19,12 @@ const getCookie = (name) => {
     .split("; ")
     .find((row) => row.startsWith(name))
     .split("=")[1];
-  console.log(coockie);
+  //   console.log(coockie);
   return coockie;
 };
 
 const deleteCookie = (name) => {
-  document.cookie = `${name} =; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+  setCookie(name, "", "Thu, 01 Jan 1970 00:00:00 UTC");
 };
 
 let fname;
@@ -47,21 +49,41 @@ const getData = () => {
   }
 };
 
+// deleteCookie("visits");
 let visits = 1;
+
 const displayData = () => {
   const div = document.querySelector(".showDiv");
-  if (hasCoocie("visits")) {
+  if (hasCookie("visits")) {
+    console.log("im working from has coocke");
     visits = Number(getCookie("visits")) + 1;
     setCookie("visits", visits);
   } else {
     setCookie("visits", visits);
   }
-  div.innerHTML = ` welcome <span style = "color: ${getCookie(
-    "color"
-  )}"> ${getCookie("name")}</span>
-  your age is ${getCookie("age")} 
-  <img src="${
-    getCookie("gender") == "male" ? "./Img/1.jpeg" : "./Img/2.jpeg"
-  }" />
-  this is your visit number ${visits}`;
+
+  let color = getCookie("color");
+  let name = getCookie("name");
+  let gender = getCookie("gender");
+  let age = getCookie("age");
+
+  let imageSrc = gender == "male" ? "./Img/1.jpeg" : "./Img/2.jpeg";
+
+  //   div.innerHTML = ` welcome <span style = "color: ${getCookie(
+  //     "color"
+  //   )}"> ${getCookie("name")}</span>
+  //   your age is ${getCookie("age")}
+  //   <img src="${
+  //     getCookie("gender") == "male" ? "./Img/1.jpeg" : "./Img/2.jpeg"
+  //   }" />`;
+  //   this is your visit number ${visits}`;
+
+  div.innerHTML = `
+welcome <span style = "color: ${color}" >  ${name} </span> 
+your age is  <span style = "color: ${color}" >  ${age} </span> 
+<img   src = ${imageSrc} alt = ${gender}/>
+
+this is your visit number ${visits}
+
+`;
 };
