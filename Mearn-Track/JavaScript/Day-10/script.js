@@ -7,18 +7,6 @@
 // duplicates([1,2,4,1,,1,5,6])  //true
 // duplicates([1,2,4,5,6])//false
 
-const checkDublicates = (arr) => {
-  for (let i = 0; i < arr.length / 2; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] == arr[j]) return true;
-    }
-  }
-  return false;
-};
-
-console.log(checkDublicates([1, 2, 4, 1, , 1, 5, 6]));
-console.log(checkDublicates([1, 2, 4, 5, 6]));
-
 // Write a program that outputs the string representation of numbers from 1 to n.
 
 // But for multiples of three it should output “Fizz” instead of the number and
@@ -48,6 +36,15 @@ console.log(checkDublicates([1, 2, 4, 5, 6]));
 //     "FizzBuzz"
 // ]
 
+const checkDublicates = (arr) => {
+  for (let i = 0; i < arr.length / 2; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] == arr[j]) return true;
+    }
+  }
+  return false;
+};
+
 const checkFizzBuzz = (n) => {
   const arr = [];
   let i = 1;
@@ -65,5 +62,7 @@ const checkFizzBuzz = (n) => {
   }
   console.log(arr);
 };
-
+console.log(checkDublicates([1, 2, 4, 1, , 1, 5, 6]));
+console.log(checkDublicates([1, 2, 4, 5, 6]));
 checkFizzBuzz(15);
+checkFizzBuzz(45);
