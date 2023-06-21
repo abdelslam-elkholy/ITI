@@ -9,7 +9,7 @@ const setCookie = function (key, val, date) {
 
 const hasCookie = (name) => {
   let coockie = document.cookie.split("; ").find((row) => row.startsWith(name));
-  console.log(coockie);
+  // console.log(coockie);
 
   return coockie ? coockie : 0;
 };
@@ -38,7 +38,7 @@ const getData = () => {
   gender = document.querySelector('input[name="gender"]:checked').value;
   color = document.getElementById("colors").value;
 
-  console.log(fname, age, gender, color);
+  // console.log(fname, age, gender, color);
 
   if (fname && age && gender && color) {
     setCookie("name", fname);
@@ -52,15 +52,19 @@ const getData = () => {
 // deleteCookie("visits");
 let visits = 1;
 
-const displayData = () => {
-  const div = document.querySelector(".showDiv");
+const updateVisits = () => {
   if (hasCookie("visits")) {
-    console.log("im working from has coocke");
+    // console.log("im working from has coocke");
     visits = Number(getCookie("visits")) + 1;
     setCookie("visits", visits);
   } else {
     setCookie("visits", visits);
   }
+};
+const displayData = () => {
+  const div = document.querySelector(".showDiv");
+
+  updateVisits();
 
   let color = getCookie("color");
   let name = getCookie("name");
