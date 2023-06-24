@@ -11,9 +11,8 @@ function List(st, en, ste) {
   function fillList() {
     let i = 0;
     let item = start;
-    // console.log(`loop number ${i + 1}`);
+
     while (item <= end) {
-      //   console.log(`loop number ${i + 1}`);
       list[i] = item;
       this.length++;
       item += steps;
@@ -26,6 +25,15 @@ function List(st, en, ste) {
   this.getList = function () {
     return list;
   };
+
+  this.setNewEnd = function (newEnd) {
+    if (newEnd != end && newEnd > start + steps) {
+      end = newEnd;
+      fillList.call(this);
+    } else {
+      throw new Error("not valid end ");
+    }
+  };
 }
 
 const newlist = new List(2, 10, 2);
@@ -33,3 +41,4 @@ const newlist = new List(2, 10, 2);
 // console.log(newlist);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
+newlist.setNewEnd(12);
