@@ -23,9 +23,9 @@ function List(st, en, ste) {
 
     fillList.call(this);
 
-    this.getList = function () {
-      return list;
-    };
+    // this.getList = function () {
+    //   return list;
+    // };
 
     this.setNewEnd = function (newEnd) {
       // console.log(newEnd, start + steps);
@@ -41,6 +41,9 @@ function List(st, en, ste) {
   }
 }
 
+List.prototype.getList = function () {
+  return list;
+};
 const newlist = new List(2, 10, 2);
 const newlist2 = new List(20, 10, 2);
 // newlist.fillList();
