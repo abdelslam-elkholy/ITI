@@ -27,6 +27,7 @@ function List(st, en, ste) {
   };
 
   this.setNewEnd = function (newEnd) {
+    // console.log(newEnd, start + steps);
     if (newEnd != end && newEnd > start + steps) {
       end = newEnd;
       fillList.call(this);
@@ -41,4 +42,6 @@ const newlist = new List(2, 10, 2);
 // console.log(newlist);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
+newlist.setNewEnd(12);
+console.log(newlist.getList());
 newlist.setNewEnd(12);
