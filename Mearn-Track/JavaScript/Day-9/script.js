@@ -11,7 +11,7 @@ function List(st, en, ste) {
   function fillList() {
     let i = 0;
     let item = start;
-
+    this.length = 0;
     while (item <= end) {
       list[i] = item;
       this.length++;
@@ -42,6 +42,15 @@ const newlist = new List(2, 10, 2);
 // console.log(newlist);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
+
 newlist.setNewEnd(12);
 console.log(newlist.getList());
-newlist.setNewEnd(12);
+console.log(`this is the list length ` + newlist.length);
+
+newlist.setNewEnd(13);
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
+
+newlist.setNewEnd(14);
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
