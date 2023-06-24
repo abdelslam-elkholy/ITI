@@ -1,43 +1,48 @@
 "use strict";
 
 function List(st, en, ste) {
-  let start = st;
-  let end = en;
-  let steps = ste;
+  if (!isNaN(st) && !isNaN(en) && !isNaN(ste) && en > st) {
+    let start = st;
+    let end = en;
+    let steps = ste;
 
-  this.length = 0;
-  const list = {};
-
-  function fillList() {
-    let i = 0;
-    let item = start;
     this.length = 0;
-    while (item <= end) {
-      list[i] = item;
-      this.length++;
-      item += steps;
-      i++;
+    const list = {};
+
+    function fillList() {
+      let i = 0;
+      let item = start;
+      this.length = 0;
+      while (item <= end) {
+        list[i] = item;
+        this.length++;
+        item += steps;
+        i++;
+      }
     }
+
+    fillList.call(this);
+
+    this.getList = function () {
+      return list;
+    };
+
+    this.setNewEnd = function (newEnd) {
+      // console.log(newEnd, start + steps);
+      if (newEnd != end && newEnd > start + steps) {
+        end = newEnd;
+        fillList.call(this);
+      } else {
+        throw new Error("not valid end ");
+      }
+    };
+  } else {
+    throw new Error("enter valid end start steps");
   }
-
-  fillList.call(this);
-
-  this.getList = function () {
-    return list;
-  };
-
-  this.setNewEnd = function (newEnd) {
-    // console.log(newEnd, start + steps);
-    if (newEnd != end && newEnd > start + steps) {
-      end = newEnd;
-      fillList.call(this);
-    } else {
-      throw new Error("not valid end ");
-    }
-  };
 }
 
 const newlist = new List(2, 10, 2);
+const newlist2 = new List(20, 10, 2);
 // newlist.fillList();
 // console.log(newlist);
 console.log(newlist.getList());
