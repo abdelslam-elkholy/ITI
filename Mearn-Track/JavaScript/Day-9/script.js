@@ -38,7 +38,16 @@ function List(st, en, ste) {
 
     this.setNewStart = function (newStart) {
       if (newStart < end - steps) {
-        end = newEnd;
+        start = newStart;
+        fillList.call(this);
+      } else {
+        throw new Error("not valid start ");
+      }
+    };
+
+    this.setNewSteps = function (newSteps) {
+      if (newSteps > 0 && newSteps + start > end) {
+        steps = newSteps;
         fillList.call(this);
       } else {
         throw new Error("not valid start ");
