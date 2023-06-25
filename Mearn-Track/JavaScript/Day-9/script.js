@@ -57,6 +57,7 @@ function List(st, en, ste) {
     this.push = function (item) {
       if (item - list[this.length - 1] == steps) {
         list[this.length] = item;
+        end += steps;
         this.length++;
         return list;
       } else {
@@ -70,6 +71,7 @@ function List(st, en, ste) {
           list[i] = list[i - 1];
         }
         list[0] = item;
+        start -= steps;
         this.length++;
         return list;
       } else {
@@ -81,11 +83,22 @@ function List(st, en, ste) {
       const lastItem = list[this.length - 1];
 
       delete list[this.length - 1];
+      end -= steps;
       this.length--;
       return lastItem;
     };
 
-    this.shift = function () {};
+    this.shift = function () {
+      const firstItem = list[0];
+      this.length--;
+      for (let i = 0; i < this.length - 1; i++) {
+        list[i] = list[i + 1];
+      }
+      delete list[this.length];
+      start += steps;
+
+      return firstItem;
+    };
   } else {
     throw new Error("enter valid end start steps");
   }
@@ -110,4 +123,19 @@ newlist.setNewEnd(14);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
 
-console.log();
+// newlist.push(15);
+newlist.push(16);
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
+
+newlist.unshift(0);
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
+
+newlist.pop();
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
+
+newlist.shift();
+console.log(newlist.getList());
+console.log(`this is the list length ` + newlist.length);
