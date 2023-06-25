@@ -55,7 +55,7 @@ function List(st, en, ste) {
     };
 
     this.push = function (item) {
-      if (item - list[length - 1] == steps) {
+      if (item - list[this.length - 1] == steps) {
         list[this.length] = item;
         this.length++;
         return list;
@@ -66,6 +66,14 @@ function List(st, en, ste) {
 
     this.unshift = function (item) {
       if (list[0] - item == steps) {
+        list[this.length] = list[this.length - 1];
+        for (let i = this.length - 1; i > 0; i--) {
+          list[i] = list[i - 1];
+        }
+        list[0] = item;
+        this.length++;
+      } else {
+        throw new Error("not valid Number ");
       }
     };
   } else {
