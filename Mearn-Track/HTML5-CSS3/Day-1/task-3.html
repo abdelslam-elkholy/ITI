@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Document</title>
+    <style>
+
+*,
+*::before,
+*::after 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+        .heading-container
+        {
+            display: flex;
+            flex-direction: column;
+            margin-left: 2rem;
+        
+        }
+        header
+        {
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(207, 136, 5);
+            justify-content: center;
+            font-weight: 400;
+            color: aliceblue;
+            padding: 1rem;
+        }
+        #header-img
+        {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+        }
+        main
+        {
+            display: flex;
+            flex-direction: row;
+        }
+        aside
+        {
+            border: 1px solid rgb(211, 205, 205);
+            flex: 0 0 40%;
+            display: flex;
+            
+            flex-direction: column;
+            
+            padding: 4rem;
+            /* align-items: center; */
+            justify-content: center;
+            
+          
+
+        }
+        .aside-div1
+        {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+        
+        .aside-div2
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .aside-div3
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        .asid-div3 a
+        {
+            padding-right: 2rem;
+            letter-spacing: 2px;
+            font-size: 1.2;
+        }
+        .sec-container
+        {
+            flex: 0 0 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+
+        }
+        .achive
+        {
+            padding: 3rem;
+            margin-top: 4rem;
+        }
+        .achive > h2
+        {
+            background-color: rgb(207, 136, 5);
+            padding: .5rem;
+            color: aliceblue;
+            margin-bottom: 1rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="img-container" style="padding: .5rem;">
+            <img src="./pexels-mohamed-abdelghaffar-771742.jpg" alt="my img" id="header-img">
+        </div>
+        <div class = "heading-container">
+            <h1>Abdelslam Elkholy</h1>
+            <span style="font-style: italic;">Web Developer</span style="font-style: italic;">
+            <p>Confident Software Engineer with Deeply understanding of core technologies of Web</p>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <div class="aside-div1" onmouseenter="playAud()" onmouseleave="pauseAud() ">
+                <h2>conatct</h2>
+                <span>Mobile:01020597823</span>
+                <span>Mail: abdelslam@iti.com</span>
+                <span>address: Elmounofia</span>
+            </div>
+
+            <div class="aside-div2">
+                <h2>Languages</h2>
+                <span>Arabic</span>
+                <meter max="80" min="0" value="95"></meter>
+                <span>English</span>
+                <meter max="80" min="0" value="50"></meter>
+                <span>German</span>
+                <meter max="80" min="0" value="30"></meter>
+            </div>
+       
+            <div>
+                <h2>Skills</h2>
+                
+                HTML
+                <div class="w3-light-grey">
+                    <div class="w3-container w3-green w3-center" style="width:25%">25%</div>
+                </div><br>
+                CSS
+                <div class="w3-light-grey">
+                    <div class="w3-container w3-red w3-center" style="width:50%">50%</div>
+                </div><br>
+                JavaScript
+                <div class="w3-light-grey">
+                    <div class="w3-container w3-blue" style="width:75%">75%</div>
+                </div><br>
+
+                </div>
+            </div>
+
+            <div class="asid-div3">
+                <h2>More Info</h2>
+                <a href="Facebook">Facebook</a>
+                <a href="Facebook">Twitter</a>
+            </div>
+
+        </aside>
+
+        <section class="sec-container">
+            <div class="achive">
+                <h2>Achivements</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                   Quod laboriosam numquam sunt libero distinctio porro magnam
+                   suscipit deserunt, fugit assumenda quas et fugiat quam molestiae
+                   sit dolor iste. Sunt, consequuntur.
+                </p>
+            </div>
+        
+            <div class="achive">
+                <h2>Education</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                   Quod laboriosam numquam sunt libero distinctio porro magnam
+                   suscipit deserunt, fugit assumenda quas et fugiat quam molestiae
+                   sit dolor iste. Sunt, consequuntur.
+                </p>
+            </div>
+        
+            <div class="achive">
+                <h2>Work Experience</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                   Quod laboriosam numquam sunt libero distinctio porro magnam
+                   suscipit deserunt, fugit assumenda quas et fugiat quam molestiae
+                   sit dolor iste. Sunt, consequuntur.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer style="height: 2rem; width: 100%; z-index: 10;">
+        
+            <span style="width: 33%; display: inline-block; height: 2rem; background-color: blue;"></span>
+            <span style="width: 33%; display: inline-block; height: 2rem; background-color: rgb(255, 225, 0);"></span>
+            <span style="width: 33%; display: inline-block; height: 2rem; background-color: rgb(255, 0, 85);"></span>
+
+    </footer>
+    <audio id="aud" src="./2.mp3"></audio>
+    <script src="./script.js"></script>
+</body>
+</html>
