@@ -4,24 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="task2.css" />
+
     <title>Document</title>
   </head>
+
   <body>
-    <form action="" class="form">
-      <div class="container">
-        <div class="label-container">
+    <form action="">
+      <div style="display: flex">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            font-size: 2rem;
+            margin-right: 2rem;
+          "
+        >
           <label for="name">Name</label>
           <label for="email">Email</label>
           <label for="password">Password</label>
           <label for="salary">Salary</label>
           <label for="age">Age</label>
         </div>
-        <div class="input-container">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          "
+        >
           <input type="text" id="name" required />
           <input type="email" id="email" required />
           <input type="password" id="password" minlength="8" required />
-          <div class="sallary-container">
+          <div>
             <input
               type="range"
               id="salary"
@@ -34,7 +48,26 @@
           <input type="number" id="age" min="21" required />
         </div>
       </div>
-      <button class="submit-btn" type="submit">Submit</button>
+      <button
+        style="
+          cursor: pointer;
+          background-color: rgb(28, 180, 28);
+          color: azure;
+          font-size: 1.5rem;
+          padding: 0.5rem 1.5rem;
+          border: none;
+          margin: 1rem;
+        "
+        type="submit"
+      >
+        Submit
+      </button>
     </form>
+
+    <script>
+      function sliderChange(val) {
+        document.getElementById("salaryvalue").innerHTML = ` $ ${val}`;
+      }
+    </script>
   </body>
 </html>
