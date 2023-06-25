@@ -1,7 +1,7 @@
 "use strict";
 
 function List(st, en, ste) {
-  if (!isNaN(st) && !isNaN(en) && !isNaN(ste) && en > st) {
+  if (!isNaN(st) && !isNaN(en) && !isNaN(ste) && en > st + ste) {
     let start = st;
     let end = en;
     let steps = ste;
@@ -51,6 +51,21 @@ function List(st, en, ste) {
         fillList.call(this);
       } else {
         throw new Error("not valid start ");
+      }
+    };
+
+    this.push = function (item) {
+      if (item - list[length - 1] == steps) {
+        list[this.length] = item;
+        this.length++;
+        return list;
+      } else {
+        throw new Error("not valid Number ");
+      }
+    };
+
+    this.unshift = function (item) {
+      if (list[0] - item == steps) {
       }
     };
   } else {
