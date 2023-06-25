@@ -66,16 +66,26 @@ function List(st, en, ste) {
 
     this.unshift = function (item) {
       if (list[0] - item == steps) {
-        list[this.length] = list[this.length - 1];
-        for (let i = this.length - 1; i > 0; i--) {
+        for (let i = this.length; i > 0; i--) {
           list[i] = list[i - 1];
         }
         list[0] = item;
         this.length++;
+        return list;
       } else {
         throw new Error("not valid Number ");
       }
     };
+
+    this.pop = function () {
+      const lastItem = list[this.length - 1];
+
+      delete list[this.length - 1];
+      this.length--;
+      return lastItem;
+    };
+
+    this.shift = function () {};
   } else {
     throw new Error("enter valid end start steps");
   }
@@ -99,3 +109,5 @@ console.log(`this is the list length ` + newlist.length);
 newlist.setNewEnd(14);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
+
+console.log();
