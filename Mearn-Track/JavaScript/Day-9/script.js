@@ -139,3 +139,26 @@ console.log(`this is the list length ` + newlist.length);
 newlist.shift();
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
+
+function Shape(x, y) {
+  if (this.constructor == Shape) {
+    throw "This is Abstract";
+  }
+  this.width = x;
+  this.height = y;
+  this.count = (this.count ? this.count : 0) + 1;
+}
+
+function Rectangle(width, height) {
+  Shape.call(this, width, height);
+}
+
+Rectangle.prototype.calcArea = function () {
+  return this.height * this.width;
+};
+
+Rectangle.prototype.constructor = Rectangle;
+
+const rec1 = new Rectangle(5, 7);
+const area = rec1.calcArea();
+console.log(area);

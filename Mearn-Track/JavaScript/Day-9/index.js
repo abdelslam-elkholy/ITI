@@ -1,7 +1,6 @@
-//factory pattern 
+//factory pattern
 
 // function employee(id,nm,sal){
-
 
 //     return {
 //         id:id,
@@ -57,7 +56,6 @@
 
 // }
 
-
 // var emp1=new Employee(1,"ali",2000)
 // var emp2=new Employee(2,"lara",3000)
 
@@ -81,13 +79,9 @@
 //     }
 // }
 
-
-
-
 // function test(a,b){
 //     console.log("first test",a,b);
 // }
-
 
 // function test(x){
 //     console.log("second test",x);
@@ -95,45 +89,42 @@
 
 // test(2,5,2)
 
-
 ///////////////////////////////////////////////////////////
 
-
-function Person(nm,ag){
-    if(this.constructor==Person){
-        throw "This is Abstract"
-    }
-    this.name=nm;
-    this.age=ag
+function Person(nm, ag) {
+  if (this.constructor == Person) {
+    throw "This is Abstract";
+  }
+  this.name = nm;
+  this.age = ag;
 }
-Person.prototype.printData=function(){
-    console.log(this.name,this.age);
-}
+Person.prototype.printData = function () {
+  console.log(this.name, this.age);
+};
 
 // var p1=new Person("no name",20)
 
-function Student(nm,ag,id,deg){
-   Person.call(this,nm,ag)
-    this.id=id;
-    this.degree=deg
-    
+function Student(nm, ag, id, deg) {
+  Person.call(this, nm, ag);
+  this.id = id;
+  this.degree = deg;
 }
 
-Student.prototype=Object.create(Person.prototype) 
+Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.displayStudent=function(){
-    console.log(this.id,this.degree);
-}
+Student.prototype.displayStudent = function () {
+  console.log(this.id, this.degree);
+};
 //overriding
-Student.prototype.printData=function(){
-    console.log("test");
-}
+Student.prototype.printData = function () {
+  console.log("test");
+};
 //static
-Student.y=0
-Student.printY=function(){
-    console.log(Student.y);
-}
+Student.y = 0;
+Student.printY = function () {
+  console.log(Student.y);
+};
 
-Student.prototype.constructor=Student
+Student.prototype.constructor = Student;
 
-var std1=new Student("ali",19,1,80)
+var std1 = new Student("ali", 19, 1, 80);
