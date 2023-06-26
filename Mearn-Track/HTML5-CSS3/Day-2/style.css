@@ -80,6 +80,7 @@ body {
   display: inline-block;
   position: absolute;
   right: 7px;
+  /* font-size: 3rem; */
 }
 
 .hide {
@@ -91,4 +92,19 @@ body {
 .show {
   opacity: 1;
   transition: all 1s;
+}
+
+.imgs-container {
+  display: flex;
+  justify-content: space-around;
+}
+.img {
+  width: 12rem;
+  height: 12rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+img:hover {
+  scale: 1.3;
 }
