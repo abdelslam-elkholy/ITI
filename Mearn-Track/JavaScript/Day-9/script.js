@@ -146,9 +146,14 @@ function Shape(x, y) {
   }
   this.width = x;
   this.height = y;
-  this.count = (this.count ? this.count : 0) + 1;
+  Shape.count = (Shape.count ? Shape.count : 0) + 1;
 }
 
+Shape.prototype.getCount = function () {
+  return Shape.count;
+};
+
+Rectangle.prototype = Object.create(Shape.prototype);
 function Rectangle(width, height) {
   Shape.call(this, width, height);
 }
@@ -160,5 +165,9 @@ Rectangle.prototype.calcArea = function () {
 Rectangle.prototype.constructor = Rectangle;
 
 const rec1 = new Rectangle(5, 7);
+const rec2 = new Rectangle(5, 7);
 const area = rec1.calcArea();
 console.log(area);
+let count = rec2.getCount();
+console.log(count);
+let count2 = rec1.count;
