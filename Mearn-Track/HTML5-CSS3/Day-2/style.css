@@ -111,7 +111,7 @@ img:hover {
 
 #name {
   margin: 6rem;
-  width: 50%;
+  width: 80%;
   padding: 2rem;
   border-radius: 100rem;
   border: none;
@@ -124,75 +124,50 @@ img:hover {
   transition: all 0.2s;
 }
 #name:focus {
-  transform: scaleX(1.1);
+  transform: scale(1.1);
   font-size: 2.5rem;
   background-color: rgb(220, 214, 214);
   border: none;
   outline: none;
 }
-@keyframes tiger-walk {
-  /* 0% {
-    transform: translateX(-100px);
-  }
 
-  50% {
-    transform: translateX(-1000px);
-  }
-  60% {
-  }
-
-  100% {
-    transform: scaleX(-1);
-  } */
-
-  0% {
-    /* transform: translateX(0); */
-    transform: scaleX(1) translateX(0);
-  }
-  /*
-  15% {
-    /* transform: translateX(0); 
-    transform: scaleX(1) translateX(-300px);
-  }
-  25% {
-     transform: translateX(0); 
-    transform: scaleX(1) translateX(-500px);
-  }
-  35% {
-    /* transform: translateX(0); 
-    transform: scaleX(1) translateX(-700px);
-  }
-  */
-  /* 40% {
-    transform: scaleX(1);
-  } */
-
-  /* 80% {
-    transform: rotateY(180deg);
-  } */
-  100% {
-    transform: scaleX(-1) translateX(0);
-    /* transform: translateX(0); */
-  }
-}
-
-@keyframes tiger-move {
-  50% {
-    transform: translateX(-1100px);
-  }
-
-  60% {
-    transform: scaleX(-1);
-    /* transform: translateX(0); */
-  }
-}
 .tiger-container {
   display: flex;
-  justify-content: end;
+  /* justify-content: end; */
   margin: 3rem;
   /* width: 100%; */
 }
+
+@keyframes moveGif {
+  0% {
+    transform: rotateY(180deg);
+  }
+  25% {
+    transform: translateX(500px) rotateY(180deg);
+  }
+  50% {
+    transform: translateX(1000px) rotateY(180deg);
+  }
+  51% {
+    transform: translateX(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
 .tiger-image {
-  animation: tiger-walk 10s infinite;
-  animation: tiger-move 10s 2s infinite;
+  animation: moveGif 12s linear infinite;
+}
+
+@font-face {
+  font-family: newFont;
+  src: url("./Tomatoes-O8L8.ttf");
+}
+
+.css-columns {
+  font-size: 2rem;
+  column-count: 3;
+  column-gap: 100px;
+  font-family: newFont;
 }
