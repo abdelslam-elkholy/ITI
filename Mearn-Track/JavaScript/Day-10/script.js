@@ -37,7 +37,7 @@
 // ]
 
 const checkDublicates = (arr) => {
-  for (let i = 0; i < arr.length / 2; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] == arr[j]) return true;
     }
@@ -64,5 +64,6 @@ const checkFizzBuzz = (n) => {
 };
 console.log(checkDublicates([1, 2, 4, 1, , 1, 5, 6]));
 console.log(checkDublicates([1, 2, 4, 5, 6]));
+console.log(checkDublicates([1, 2, 4, 5, 5, 6]));
 checkFizzBuzz(15);
 checkFizzBuzz(45);
