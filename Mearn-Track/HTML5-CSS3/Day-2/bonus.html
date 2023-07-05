@@ -2,35 +2,31 @@
 <html>
   <head>
     <style>
-      /* Style for the accordion */
       .accordion {
         display: flex;
         overflow: hidden;
         width: 100%;
       }
 
-      /* Style for the accordion items */
       .accordion-item {
         background-color: #f0f0f0;
         border-right: 1px solid #ccc;
         flex-grow: 1;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
         cursor: pointer;
       }
 
-      /* Style for the accordion content */
       .accordion-content {
+        display: none;
         padding: 10px;
       }
 
-      /* Style for the active accordion item */
       .accordion-item.active {
         background-color: #ccc;
-        flex-grow: 3;
+        transform: scaleX(1);
       }
 
-      /* Style for the active accordion content */
       .accordion-item.active .accordion-content {
         display: block;
       }
@@ -41,28 +37,45 @@
       <div class="accordion-item">
         <div class="accordion-header">Section 1</div>
         <div class="accordion-content">
-          <p>Content for section 1</p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
+            aliquam distinctio reiciendis facere architecto earum eligendi in ut
+            id ipsam, tempore amet repellat accusantium incidunt exercitationem
+            neque quibusdam error? Repudiandae?
+          </p>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header">Section 2</div>
         <div class="accordion-content">
-          <p>Content for section 2</p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
+            aliquam distinctio reiciendis facere architecto earum eligendi in ut
+            id ipsam, tempore amet repellat accusantium incidunt exercitationem
+            neque quibusdam error? Repudiandae?
+          </p>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header">Section 3</div>
         <div class="accordion-content">
-          <p>Content for section 3</p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
+            aliquam distinctio reiciendis facere architecto earum eligendi in ut
+            id ipsam, tempore amet repellat accusantium incidunt exercitationem
+            neque quibusdam error? Repudiandae?
+          </p>
         </div>
       </div>
     </div>
 
     <script>
-      // Add click event listeners to accordion items
       const accordionItems = document.querySelectorAll(".accordion-item");
       accordionItems.forEach((item) => {
-        item.addEventListener("click", () => {
+        const header = item.querySelector(".accordion-header");
+        const content = item.querySelector(".accordion-content");
+
+        header.addEventListener("click", () => {
           accordionItems.forEach((accItem) => {
             accItem.classList.remove("active");
           });

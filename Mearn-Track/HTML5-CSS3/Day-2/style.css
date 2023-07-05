@@ -171,16 +171,3 @@ img:hover {
   column-gap: 100px;
   font-family: newFont;
 }
-
-.accordion {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Style for the accordion items */
-.accordion-item {
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  cursor: pointer;
-}
