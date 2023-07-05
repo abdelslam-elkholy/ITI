@@ -155,19 +155,55 @@ Shape.prototype.getCount = function () {
 
 Rectangle.prototype = Object.create(Shape.prototype);
 function Rectangle(width, height) {
-  Shape.call(this, width, height);
+  if (this.constructor == Rectangle) {
+    if (Rectangle.count >= 1) {
+      throw new Error("Only one rectangle can be created");
+    }
+    Shape.call(this, width, height);
+    Rectangle.count = 1;
+  } else {
+    Shape.call(this, width, height);
+  }
 }
 
 Rectangle.prototype.calcArea = function () {
   return this.height * this.width;
 };
 
+Rectangle.prototype.calcPremiter = function () {
+  return (this.height + this.width) * 2;
+};
+
 Rectangle.prototype.constructor = Rectangle;
 
+Square.prototype = Object.create(Rectangle.prototype);
+
+function Square(side) {
+  if (Square.count >= 1) {
+    throw new Error("Only one Square can be created");
+  }
+  Rectangle.call(this, side, side);
+  Square.count = 1;
+}
+
+Square.prototype.constructor = Square;
+
+// const shape = new Shape(2, 3);
+
 const rec1 = new Rectangle(5, 7);
-const rec2 = new Rectangle(5, 7);
-const area = rec1.calcArea();
-console.log(area);
-let count = rec2.getCount();
-console.log(count);
-let count2 = rec1.count;
+// const rec2 = new Rectangle(5, 7);
+
+const sqr1 = new Square(5);
+// const sqr2 = new Square(6);
+
+const recArea = rec1.calcArea();
+const recPrem = rec1.calcPremiter();
+const sqrArea = sqr1.calcArea();
+const sqrPrem = sqr1.calcPremiter();
+
+console.log(recArea, recPrem);
+console.log(sqrArea, sqrPrem);
+
+let count = rec1.getCount();
+// let count2 = sqr2.getCount();
+// console.log(count, count2);
