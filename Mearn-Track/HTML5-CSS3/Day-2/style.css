@@ -171,3 +171,31 @@ img:hover {
   column-gap: 100px;
   font-family: newFont;
 }
+
+.cards-container {
+  display: flex;
+}
+
+.card {
+  /* width: 100px; */
+  /* height: 100px; */
+  background-color: lightblue;
+  transition: transform 0.3s ease;
+  text-align: center;
+  font-size: 30px;
+}
+
+.card-content {
+  display: none;
+  background-color: lightgray;
+  padding: 10px;
+  color: black;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  width: 80%;
+}
+
+.card.active .card-content {
+  display: block;
+}
