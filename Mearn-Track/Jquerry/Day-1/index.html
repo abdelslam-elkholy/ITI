@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      .tab {
+        display: none;
+        /* flex: 1; */
+        background-color: rgba(78, 78, 78, 0.096);
+        padding: 2rem;
+        align-self: center;
+        width: 40%;
+      }
+      .tabContent {
+        display: flex;
+        justify-content: center;
+      }
+      .tabs {
+        list-style: none;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+      .tabItem {
+        background-color: rgba(128, 128, 128, 0.096);
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        margin-right: 0.4rem;
+        cursor: pointer;
+      }
+      .active {
+        background-color: rgba(128, 128, 128, 0.438);
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="nameInpt" placeholder="Enter a name" />
+    <button class="addBtn">Add</button>
+    <ul class="nameList"></ul>
+
+    <ul class="tabs">
+      <li class="tabItem">Tab 1</li>
+      <li class="tabItem">Tab 2</li>
+      <li class="tabItem">Tab 3</li>
+      <li class="tabItem">Tab 4</li>
+    </ul>
+
+    <div class="tabContent">
+      <div class="tab">Tab 1 Content</div>
+      <div class="tab">Tab 2 Content</div>
+      <div class="tab">Tab 3 Content</div>
+      <div class="tab">Tab 4 Content</div>
+    </div>
+
+    <script>
+      $(".addBtn").click(function () {
+        var name = $(".nameInpt").val();
+        if (name !== "") {
+          var item = $("<li>").text(name);
+          var deleteBtn = $("<span>").text(" Delete");
+          item.append(deleteBtn);
+          deleteBtn.click(function () {
+            $(this).parent().remove();
+          });
+          $(".nameList").append(item);
+          $(".nameInpt").val("");
+        }
+      });
+
+      $(document).ready(function () {
+        $(".tabItem").click(function () {
+          $(".tab").hide();
+          $(".tab").eq($(this).index()).show();
+          $(".tabItem").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
+  </body>
+</html>
