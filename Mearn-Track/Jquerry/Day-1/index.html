@@ -68,13 +68,11 @@
         }
       });
 
-      $(document).ready(function () {
-        $(".tabItem").click(function () {
-          $(".tab").hide();
-          $(".tab").eq($(this).index()).show();
-          $(".tabItem").removeClass("active");
-          $(this).addClass("active");
-        });
+      $(".tabItem").click(function () {
+        $(".tab").hide();
+        $(".tab").eq($(this).index()).show();
+        $(".tabItem").removeClass("active");
+        $(this).addClass("active");
       });
     </script>
   </body>
