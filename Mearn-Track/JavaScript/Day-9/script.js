@@ -1,7 +1,7 @@
 "use strict";
 
 function List(st, en, ste) {
-  if (!isNaN(st) && !isNaN(en) && !isNaN(ste) && en > st + ste) {
+  if (!isNaN(st) && !isNaN(en) && !isNaN(ste) && en >= st + ste) {
     let start = st;
     let end = en;
     let steps = ste;
@@ -28,7 +28,7 @@ function List(st, en, ste) {
     };
 
     this.setNewEnd = function (newEnd) {
-      if (newEnd > start + steps) {
+      if (newEnd >= start + steps) {
         end = newEnd;
         fillList.call(this);
       } else {
@@ -37,7 +37,7 @@ function List(st, en, ste) {
     };
 
     this.setNewStart = function (newStart) {
-      if (newStart < end - steps) {
+      if (newStart <= end - steps) {
         start = newStart;
         fillList.call(this);
       } else {
@@ -46,7 +46,7 @@ function List(st, en, ste) {
     };
 
     this.setNewSteps = function (newSteps) {
-      if (newSteps > 0 && newSteps + start > end) {
+      if (newSteps > 0 && newSteps + start >= end) {
         steps = newSteps;
         fillList.call(this);
       } else {
@@ -159,11 +159,10 @@ function Rectangle(width, height) {
     if (Rectangle.count >= 1) {
       throw new Error("Only one rectangle can be created");
     }
-    Shape.call(this, width, height);
+
     Rectangle.count = 1;
-  } else {
-    Shape.call(this, width, height);
   }
+  Shape.call(this, width, height);
 }
 
 Rectangle.prototype.calcArea = function () {
@@ -173,7 +172,6 @@ Rectangle.prototype.calcArea = function () {
 Rectangle.prototype.calcPremiter = function () {
   return (this.height + this.width) * 2;
 };
-
 Rectangle.prototype.constructor = Rectangle;
 
 Square.prototype = Object.create(Rectangle.prototype);
@@ -206,4 +204,4 @@ console.log(sqrArea, sqrPrem);
 
 let count = rec1.getCount();
 // let count2 = sqr2.getCount();
-// console.log(count, count2);
+console.log(count);
