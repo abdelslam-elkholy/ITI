@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <style>
+    .img {
+      height: 10rem;
+      width: 15rem;
+    }
+  </style>
+  <body>
+    <div class="img-container">
+      <img src="images/1.jpg" alt="" class="img" />
+      <img src="images/2.jpg" alt="" class="img" />
+      <img src="images/3.jpg" alt="" class="img" />
+      <img src="images/4.jpg" alt="" class="img" />
+    </div>
+    <div class="container"></div>
+    <script>
+      $(document).ready(function () {
+        $("img").click(function () {
+          event.stopPropagation();
+          $("img#img_new").remove();
+          console.log("im workin from click");
+          var image = $("<img id='img_new'/>")
+            .attr("src", $(this).attr("src"))
+            .css({
+              position: "absolute",
+              left: "30%",
+              top: "30%",
+              width: "500px",
+              height: "500px",
+              zindex: "1",
+              opacity: "1",
+            });
+          $("body").append(image);
+          //   $("body").css("opacity", ".5");
+          //   image.css("opacity", "1");
+        });
+      });
+
+      $(document).click(function (event) {
+        console.log("im workin from blur");
+
+        console.log(event.target.id);
+        if (event.target.id != "img_new") {
+          console.log("workin in if blur");
+          $("img#img_new").remove();
+        }
+      });
+    </script>
+  </body>
+</html>
