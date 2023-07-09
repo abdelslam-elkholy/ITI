@@ -7,39 +7,69 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <style>
+    body {
+      position: relative;
+    }
     .img {
       height: 10rem;
       width: 15rem;
     }
-  </style>
-  <body>
-    <div class="img-container">
-      <img src="images/1.jpg" alt="" class="img" />
-      <img src="images/2.jpg" alt="" class="img" />
-      <img src="images/3.jpg" alt="" class="img" />
-      <img src="images/4.jpg" alt="" class="img" />
-    </div>
-    <div class="container"></div>
-    <script>
-      $(document).ready(function () {
-        $("img").click(function () {
-          event.stopPropagation();
-          $("img#img_new").remove();
-          console.log("im workin from click");
-          var image = $("<img id='img_new'/>")
-            .attr("src", $(this).attr("src"))
-            .css({
-              position: "absolute",
+    .container {
+      position: absolute;
+      left: 30%;
+      top: 30%;
+
+      /* position: "absolute",
               left: "30%",
               top: "30%",
               width: "500px",
               height: "500px",
               zindex: "1",
+              opacity: "1", */
+    }
+  </style>
+  <body>
+    <div>
+      <img src="images/1.jpg" alt="" class="img" />
+      <img src="images/2.jpg" alt="" class="img" />
+      <img src="images/3.jpg" alt="" class="img" />
+      <img src="images/4.jpg" alt="" class="img" />
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("img").click(function () {
+          event.stopPropagation();
+          $(".container").remove();
+
+          console.log("im workin from click");
+          var image = $("<img id='img_new'/>")
+            .attr("src", $(this).attr("src"))
+            .css({
+              width: "400px",
+              height: "400px",
+              zindex: "1",
               opacity: "1",
             });
-          $("body").append(image);
+          var container = $('<div class="container"></div> ');
+          container.css({
+            position: "absolute",
+            left: "30%",
+            top: "30%",
+          });
+          var nextBtn = $("<button>").text("next").addClass("next-btn");
+          var prevBtn = $("<button>").text("prev").addClass("prev-btn");
+          container.append(image, nextBtn, prevBtn);
+          $("body").append(container);
+
           //   $("body").css("opacity", ".5");
           //   image.css("opacity", "1");
+          var images = $(".img");
+          var index = $(this).index();
+          nextBtn.click(function () {
+            var curIndex = index >= images.length ? 0 : index + 1;
+            image.attr("src", images.eq(curIndex).attr("src"));
+          });
         });
       });
 
@@ -49,7 +79,10 @@
         console.log(event.target.id);
         if (event.target.id != "img_new") {
           console.log("workin in if blur");
-          $("img#img_new").remove();
+          //   $("img#img_new").remove();
+          //   $(".next-btn").remove();
+          //   $(".prev-btn").remove();
+          $(".container").remove();
         }
       });
     </script>

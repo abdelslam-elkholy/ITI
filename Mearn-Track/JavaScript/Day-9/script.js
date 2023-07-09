@@ -119,26 +119,26 @@ newlist.setNewEnd(13);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
 
-newlist.setNewEnd(14);
+newlist.setNewEnd(28);
 console.log(newlist.getList());
 console.log(`this is the list length ` + newlist.length);
 
-// newlist.push(15);
-newlist.push(16);
-console.log(newlist.getList());
-console.log(`this is the list length ` + newlist.length);
+// // newlist.push(15);
+// newlist.push(16);
+// console.log(newlist.getList());
+// console.log(`this is the list length ` + newlist.length);
 
-newlist.unshift(0);
-console.log(newlist.getList());
-console.log(`this is the list length ` + newlist.length);
+// newlist.unshift(0);
+// console.log(newlist.getList());
+// console.log(`this is the list length ` + newlist.length);
 
-newlist.pop();
-console.log(newlist.getList());
-console.log(`this is the list length ` + newlist.length);
+// newlist.pop();
+// console.log(newlist.getList());
+// console.log(`this is the list length ` + newlist.length);
 
-newlist.shift();
-console.log(newlist.getList());
-console.log(`this is the list length ` + newlist.length);
+// newlist.shift();
+// console.log(newlist.getList());
+// console.log(`this is the list length ` + newlist.length);
 
 function Shape(x, y) {
   if (this.constructor == Shape) {
@@ -192,7 +192,7 @@ const rec1 = new Rectangle(5, 7);
 // const rec2 = new Rectangle(5, 7);
 
 const sqr1 = new Square(5);
-// const sqr2 = new Square(6);
+const sqr2 = new Square(6);
 
 const recArea = rec1.calcArea();
 const recPrem = rec1.calcPremiter();
