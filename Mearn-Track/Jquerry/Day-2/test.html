@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <style>
+    .gallery {
+      display: flex;
+      justify-content: space-between;
+    }
+    .gallery img {
+      width: 10rem;
+      height: 10rem;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      display: none;
+    }
+
+    .overlay-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay-buttons {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    #prev-button,
+    #next-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #fff;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="gallery">
+      <img src="images/1.jpg" alt="Image 1" />
+      <img src="images/2.jpg" alt="Image 2" />
+      <img src="images/3.jpg" alt="Image 3" />
+      <img src="images/4.jpg" alt="Image 4" />
+    </div>
+
+    <div class="overlay">
+      <div class="overlay-content">
+        <img id="overlay-image" src="" alt="" />
+        <div class="overlay-buttons">
+          <button id="prev-button">Prev</button>
+          <button id="next-button">Next</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        var images = $(".gallery img");
+        console.log(images);
+        var currentIndex = 0;
+
+        $(".gallery img").on("click", function () {
+          var imageUrl = $(this).attr("src");
+          currentIndex = $(this).index();
+          showImage(imageUrl);
+        });
+
+        $("#next-button").on("click", function (e) {
+          e.stopPropagation();
+          currentIndex++;
+          currentIndex = currentIndex == images.length ? 0 : currentIndex;
+          showImage(images[currentIndex].currentSrc);
+        });
+
+        $("#prev-button").on("click", function (e) {
+          e.stopPropagation();
+          currentIndex--;
+          currentIndex = currentIndex < 0 ? images.length - 1 : currentIndex;
+          showImage(images[currentIndex].currentSrc);
+        });
+
+        function showImage(imageUrl) {
+          //   $(".overlay").show();
+          $(".overlay").fadeIn();
+          $("#overlay-image").attr("src", imageUrl).fadeIn();
+        }
+
+        $("body").on("click", function (e) {
+          if ($(e.target).hasClass("overlay-content")) {
+            $(".overlay").fadeOut();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
