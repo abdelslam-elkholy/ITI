@@ -105,7 +105,7 @@ html {
   font-size: 2rem;
   font-weight: bold;
 }
-.section-item-content-col-dates::after {
+.section-item-content-col::after {
   content: "";
   height: 2px;
   width: 5rem;
