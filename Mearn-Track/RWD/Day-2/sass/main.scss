@@ -1,0 +1,133 @@
+$color-primary: rgb(246, 149, 34);
+$color-font: aliceblue;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 40%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  html {
+    font-size: 30%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 25%;
+  }
+}
+@media only screen and (max-width: 350px) {
+  html {
+    font-size: 20%;
+  }
+}
+
+header {
+  /* width: 100vw; */
+  display: flex;
+  background-color: $color-primary;
+  color: $color-font;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  /* width: 100vw; */
+}
+.header-img-container {
+  border-radius: 50%;
+}
+.header-img {
+  width: 25rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  width: 50vw;
+}
+.header-name {
+  font-size: 3.5rem;
+  letter-spacing: 1.5rem;
+  margin-top: -2rem;
+}
+.header-profession {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  padding-bottom: 3rem;
+}
+.header-text {
+  font-size: 1.5rem;
+}
+section {
+  /* height: 60vh; */
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8rem;
+  margin: 3rem 10rem;
+}
+
+.section-item {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.123);
+  padding: 2rem;
+}
+.section-heading {
+  cursor: pointer;
+  font-size: 2.5rem;
+  letter-spacing: 0.6rem;
+  background-color: $color-primary;
+  color: $color-font;
+  width: 30rem;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.2s;
+}
+.section-heading:hover {
+  transform: scale(1.1);
+}
+.section-text {
+  margin-bottom: 3rem;
+  font-size: 1.8rem;
+}
+.contact-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 3rem;
+  fill: var(--color-primary);
+}
+.mobile-num {
+  font-size: 2rem;
+}
+
+.footer {
+  /* width: 100vw; */
+  height: 5rem;
+  background-color: var(--color-primary);
+  color: aliceblue;
+  font-size: 2rem;
+  letter-spacing: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
