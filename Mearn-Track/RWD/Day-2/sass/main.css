@@ -1,0 +1,125 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 40%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  html {
+    font-size: 30%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 25%;
+  }
+}
+@media only screen and (max-width: 350px) {
+  html {
+    font-size: 20%;
+  }
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  color: rgb(19, 33, 44);
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.header-img {
+  width: 25rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+.header-name {
+  font-size: 3.5rem;
+  letter-spacing: 1.5rem;
+}
+.header-profession {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  padding-bottom: 3rem;
+}
+.header-text {
+  font-size: 2rem;
+}
+
+.section {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 4rem;
+  margin: 3rem;
+}
+.section-item {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.123);
+  padding: 2rem;
+  align-items: center;
+}
+.section-item-heading {
+  width: 100%;
+  font-size: 2.5rem;
+  letter-spacing: 0.6rem;
+  background-color: rgb(34, 126, 246);
+  color: aliceblue;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-item-content {
+  display: flex;
+  justify-content: space-between;
+}
+.section-item-content-col {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.section-item-content-col-text {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.section-item-content-col-dates {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.section-item-content-col-dates::after {
+  content: "";
+  height: 2px;
+  width: 5rem;
+  background-color: red;
+  position: absolute;
+}
+
+.footer {
+  /* width: 100vw; */
+  height: 5rem;
+  background-color: var(--color-primary);
+  color: aliceblue;
+  font-size: 2rem;
+  letter-spacing: 1rem;
+  text-align: center;
+  padding: 1rem;
+}/*# sourceMappingURL=main.css.map */

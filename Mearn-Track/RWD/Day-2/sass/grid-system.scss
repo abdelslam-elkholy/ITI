@@ -1,0 +1,64 @@
+$grid-spacing: 2%;
+
+%clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.row {
+  @extend %clearfix;
+
+  & + & {
+    margin-top: $grid-spacing;
+  }
+}
+
+.col-1 {
+  width: (100% / 16) - ($grid-spacing * 15 / 16);
+}
+.col-2 {
+  width: (100% / 8) - ($grid-spacing * 14 / 16);
+}
+.col-3 {
+  width: (100% / 5.333333333333333) - ($grid-spacing * 13 / 16);
+}
+.col-4 {
+  width: (100% / 4) - ($grid-spacing * 12 / 16);
+}
+.col-5 {
+  width: (100% / 3.2) - ($grid-spacing * 11 / 16);
+}
+.col-6 {
+  width: (100% / 2.666666666666667) - ($grid-spacing * 10 / 16);
+}
+.col-7 {
+  width: (100% / 2.285714285714286) - ($grid-spacing * 9 / 16);
+}
+.col-8 {
+  width: (100% / 2) - ($grid-spacing * 8 / 16);
+}
+.col-9 {
+  width: (100% / 1.777777777777778) - ($grid-spacing * 7 / 16);
+}
+.col-10 {
+  width: (100% / 1.6) - ($grid-spacing * 6 / 16);
+}
+.col-11 {
+  width: (100% / 1.454545454545455) - ($grid-spacing * 5 / 16);
+}
+.col-12 {
+  width: (100% / 1.333333333333333) - ($grid-spacing * 4 / 16);
+}
+.col-13 {
+  width: (100% / 1.230769230769231) - ($grid-spacing * 3 / 16);
+}
+.col-14 {
+  width: (100% / 1.142857142857143) - ($grid-spacing * 2 / 16);
+}
+.col-15 {
+  width: (100% / 1.066666666666667) - ($grid-spacing * 1 / 16);
+}
+.col-16 {
+  width: 100%;
+}

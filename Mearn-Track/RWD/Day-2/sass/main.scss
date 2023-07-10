@@ -1,5 +1,6 @@
-$color-primary: rgb(246, 149, 34);
-$color-font: aliceblue;
+$color-primary: rgb(34, 126, 246);
+$color-font: rgb(19, 33, 44);
+$color-font-sec: aliceblue;
 
 *,
 *::before,
@@ -40,85 +41,90 @@ html {
   }
 }
 
-header {
-  /* width: 100vw; */
+.header {
   display: flex;
-  background-color: $color-primary;
+  flex-direction: column;
   color: $color-font;
-  padding: 1rem;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
-  /* width: 100vw; */
-}
-.header-img-container {
-  border-radius: 50%;
-}
-.header-img {
-  width: 25rem;
-  height: 20rem;
-  border-radius: 50%;
-}
-.header-content {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5rem;
-  width: 50vw;
-}
-.header-name {
-  font-size: 3.5rem;
-  letter-spacing: 1.5rem;
-  margin-top: -2rem;
-}
-.header-profession {
-  font-size: 1.8rem;
-  letter-spacing: 0.3rem;
-  padding-bottom: 3rem;
-}
-.header-text {
-  font-size: 1.5rem;
-}
-section {
-  /* height: 60vh; */
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8rem;
-  margin: 3rem 10rem;
+
+  &-img {
+    width: 25rem;
+    height: 20rem;
+    border-radius: 50%;
+  }
+  &-name {
+    font-size: 3.5rem;
+    letter-spacing: 1.5rem;
+  }
+  &-profession {
+    font-size: 1.8rem;
+    letter-spacing: 0.3rem;
+    padding-bottom: 3rem;
+  }
+  &-text {
+    font-size: 2rem;
+  }
 }
 
-.section-item {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.123);
-  padding: 2rem;
-}
-.section-heading {
-  cursor: pointer;
-  font-size: 2.5rem;
-  letter-spacing: 0.6rem;
-  background-color: $color-primary;
-  color: $color-font;
-  width: 30rem;
-  padding: 1rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  transition: all 0.2s;
-}
-.section-heading:hover {
-  transform: scale(1.1);
-}
-.section-text {
-  margin-bottom: 3rem;
-  font-size: 1.8rem;
-}
-.contact-icon {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 3rem;
-  fill: var(--color-primary);
-}
-.mobile-num {
-  font-size: 2rem;
+.section {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 4rem;
+  margin: 3rem;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.123);
+    padding: 2rem;
+    align-items: center;
+
+    &-heading {
+      width: 100%;
+      font-size: 2.5rem;
+      letter-spacing: 0.6rem;
+      background-color: $color-primary;
+      color: $color-font-sec;
+      padding: 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    &-content {
+      display: flex;
+      justify-content: space-between;
+
+      &-col {
+        margin: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        &-text {
+          display: block;
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+        }
+
+        &-dates {
+          display: block;
+          font-size: 2rem;
+          font-weight: bold;
+          &::after {
+            content: "";
+            // height: 100%;
+            height: 2px;
+            width: 5rem;
+            background-color: red;
+            position: absolute;
+            // top: 1rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .footer {
