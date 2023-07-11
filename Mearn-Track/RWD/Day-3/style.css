@@ -1,3 +1,61 @@
+.col-1 {
+  width: 5.5833333333%;
+}
+
+.col-2 {
+  width: 14.1666666667%;
+}
+
+.col-3 {
+  width: 22.75%;
+}
+
+.col-4 {
+  width: 31.3333333333%;
+}
+
+.col-5 {
+  width: 39.9166666667%;
+}
+
+.col-6 {
+  width: 48.5%;
+}
+
+.col-7 {
+  width: 57.0833333333%;
+}
+
+.col-8 {
+  width: 65.6666666667%;
+}
+
+.col-9 {
+  width: 74.25%;
+}
+
+.col-10 {
+  width: 82.8333333333%;
+}
+
+.col-11 {
+  width: 91.4166666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.row:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.row + .row {
+  margin-top: 3%;
+}
+
 *,
 *::after,
 *::before {
@@ -8,4 +66,14 @@
 
 html {
   font-size: 62.5%;
+}
+
+.links-list {
+  font-size: 2.5rem;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.links-list__link {
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

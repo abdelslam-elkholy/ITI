@@ -1,28 +1,27 @@
-@function generate-grid($columns, $spacing) {
-  // $grid-classes: ();
+$grid-spacing: 3%;
+$columns: 12;
+$grid-columns: ();
 
-  @for $i from 1 through $columns {
-    $width: (100% / $columns) - ($spacing * ($columns - 1) / $columns);
-    $class-name: ".col-#{$i}";
+@for $i from 1 through $columns {
+  $width: (100% / ($columns / $i)) -
+    ($grid-spacing * ($columns - $i) / $columns);
+  $col-name: ".col-#{$i}";
 
-    $grid-classes: append($grid-classes, $class-name, comma);
+  $grid-columns: $grid-columns, $col-name;
 
-    #{$class-name} {
-      width: $width;
-    }
+  #{$col-name} {
+    width: $width;
   }
-
-  @return $grid-classes;
 }
 
-// Configuration variables
-$grid-columns: 12;
-$grid-spacing: 20px;
+$grid-columns: grid-system(12);
 
-// Generate grid classes for the specified number of columns and spacing
-$grid-classes: generate-grid-classes($grid-columns, $grid-spacing);
+%clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
 
-// Usage example:
 .row {
   @extend %clearfix;
 
@@ -41,4 +40,15 @@ $grid-classes: generate-grid-classes($grid-columns, $grid-spacing);
 
 html {
   font-size: 62.5%;
+}
+
+.links-list {
+  font-size: 2.5rem;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  &__link {
+    // text-align: center;
+    justify-content: center;
+  }
 }
