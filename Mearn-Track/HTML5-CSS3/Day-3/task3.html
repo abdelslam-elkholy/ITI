@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task3</title>
+    <style>
+        canvas{
+            border: 2px dotted black;
+        }
+    </style>
+</head>
+<body onload="setupCanvas();">
+    <canvas id="canvas" width="500" height="500">Upgrade Browser</canvas>
+    
+
+    <script type="text/javascript">
+          
+        function setupCanvas(){
+            var canvas = document.getElementById("canvas");
+            if(canvas.getContext){
+                var layout = canvas.getContext("2d");
+                var img1 = new Image();
+                img1.src = "sad.png";
+                var img2 = new Image();
+                img2.src = "smiley.png";
+                img1.onload = function(){
+                    layout.drawImage(img1,100,100);
+                }
+                img2.onload = function(){
+                    layout.drawImage(img2,100,100);
+                }
+            }
+            canvas.addEventListener('mouseover',()=>{
+                console.log("click");
+                layout.drawImage(img1,100,100);
+                layout.style.transition = 'scale(1.2) 0.2'
+            })
+            canvas.addEventListener('click',()=>{
+                console.log("click");
+                layout.drawImage(img2,100,100);
+                layout.style.transition = 'scale(1) 0.2'
+            })
+        }
+    </script>
+</body>
+</html>

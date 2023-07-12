@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task1</title>
+    <style>
+      div {
+        width: 300px;
+        height: 300px;
+        border: 2px solid blue;
+      }
+    </style>
+  </head>
+  <body ondrop="dropImg(event)" ondragover="dragImg(event)">
+    <div id="myDiv" ondrop="dropImg(event)" ondragover="dragImg(event)"></div>
+    <img
+      id="myImg"
+      width="200"
+      height="200"
+      draggable="true"
+      ondragstart="drag(event)"
+      src="./gallery-04.png"
+      alt=""
+    />
+    <p id="score"></p>
+
+    <script>
+        let count = JSON.parse(sessionStorage.getItem('score'));
+        let score = document.getElementById('score');
+        if(count == null)  {
+            score.innerHTML = 0
+        } else {
+            score.innerHTML = score;
+        }
+        
+      function dragImg(e) {
+        e.preventDefault();
+      }
+      function drag(e) {
+        e.dataTransfer.setData("img", e.target.id);
+        count++;
+        sessionStorage.setItem('score', JSON.stringify(+(score.textContent)+1));
+      }
+      function dropImg(e) {
+        const data = e.dataTransfer.getData("img");
+        const imgDate = document.getElementById(data)
+        e.target.appendChild(imgDate);
+        score.innerHTML = count;
+      }
+    </script>
+  </body>
+</html>

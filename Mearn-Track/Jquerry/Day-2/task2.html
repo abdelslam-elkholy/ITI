@@ -2,10 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="task2.js"></script>
+    <title>Document</title>
+    <style>
+      .menu-container {
+        cursor: pointer;
+        width: 220px;
+        height: 400px;
+        background-color: rgb(131, 8, 32);
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        position: relative;
+        left: -180px;
+      }
+
+      .menu-item {
+        cursor: pointer;
+        color: aliceblue;
+        padding: 20px 0 40px 0;
+        font-size: 18px;
+      }
+      .submenu {
+        margin-top: 20px;
+        display: none;
+        /* height: 150px; */
+      }
+
+      .submenu-item {
+        margin-top: 10px;
+      }
+    </style>
   </head>
-  <style></style>
-  <body></body>
+  <body>
+    <ul class="menu-container">
+      <li class="menu-item">
+        Item1
+        <ul class="submenu">
+          <li class="submenu-item">Content 1</li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        Item2
+        <ul class="submenu">
+          <li class="submenu-item">Content 2</li>
+        </ul>
+      </li>
+    </ul>
+
+    <script>
+      $(document).ready(function () {
+        $(".menu-item").click(function () {
+          let submenu = $(this).find(".submenu");
+          submenu.slideToggle();
+        });
+
+        $(".menu-container").mouseenter(function () {
+          $(".menu-container").animate({ left: "-10px" });
+        });
+        $(".menu-container").mouseleave(function () {
+          $(".menu-container").animate({ left: "-180px" });
+        });
+      });
+    </script>
+  </body>
 </html>
