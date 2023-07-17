@@ -13,14 +13,19 @@ const maxMinFun = function (arr) {
 
 console.log(maxMinFun([1, 4, 7, 9, 5, 3]));
 
-var fruits = ["apple", "strawberry", "banana", "orange", "mango"];
+const fruits = ["apple", "strawberry", "banana", "orange", "mango"];
 
 console.log(fruits.every((str) => typeof str == "string"));
 
 console.log(fruits.some((str) => str.startsWith("a")));
 
-console.log(fruits.filter((str) => str.startsWith("b") || str.startsWith("s")));
+console.log(
+  fruits.filter(
+    (str) =>
+      str.toLowerCase().startsWith("b") || str.toLowerCase().startsWith("s")
+  )
+);
 
-console.log(fruits.map((str) => `I like ${str}`));
+const newFruits = fruits.map((str) => `I like ${str}`);
 
-fruits.forEach((str) => console.log(str));
+newFruits.forEach((str) => console.log(str));
