@@ -42,14 +42,23 @@
           );
           const users = await response.json();
 
+          console.log("working from try");
+          console.log(users);
+
           users.forEach((user) => {
             let btn = document.createElement("button");
             btn.classList.add("btn");
             userContainer.appendChild(btn);
             btn.innerText = user.name;
 
+            console.log(btn);
+
             btn.onclick = async function () {
               const btns = document.querySelectorAll(".btn");
+
+              console.log("working from click");
+              console.log(btns);
+
               btns.forEach((btn) => {
                 btn.classList.remove("btn-active");
               });
@@ -60,9 +69,13 @@
               );
               const posts = await res.json();
 
+              console.log(posts);
+
               posts.forEach((post) => {
                 let listItem = document.createElement("li");
                 listItem.innerText = post.title;
+
+                console.log(listItem);
                 dataContainer.appendChild(listItem);
               });
             };
