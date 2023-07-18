@@ -70,9 +70,12 @@
               console.log(posts);
 
               posts.forEach((post) => {
-                let listItem = document.createElement("li");
-                listItem.innerText = post.title;
-                dataContainer.appendChild(listItem);
+                let listItemTitle = document.createElement("li");
+                let listItemBody = document.createElement("p");
+                listItemTitle.innerText = post.title;
+                listItemBody.innerText = post.body;
+                dataContainer.appendChild(listItemTitle);
+                dataContainer.appendChild(listItemBody);
               });
             };
           });
