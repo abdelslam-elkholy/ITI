@@ -51,8 +51,6 @@
             userContainer.appendChild(btn);
             btn.innerText = user.name;
 
-            console.log(btn);
-
             btn.onclick = async function () {
               const btns = document.querySelectorAll(".btn");
 
@@ -75,7 +73,6 @@
                 let listItem = document.createElement("li");
                 listItem.innerText = post.title;
 
-                console.log(listItem);
                 dataContainer.appendChild(listItem);
               });
             };
