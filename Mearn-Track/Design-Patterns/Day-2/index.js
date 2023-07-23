@@ -42,8 +42,8 @@ const cust1 = new Customer("ahmed");
 const cust2 = new Customer("mohammed");
 
 const store = new Store("Zara");
-store.releaseNewProduct("cargo");
 store.regiester(cust1);
+store.releaseNewProduct("cargo");
 store.notifyAll();
 
 store.releaseNewProduct("Nike Jordan");
