@@ -31,3 +31,21 @@ exports.deleteStudent = async (req, res) => {
     });
   }
 };
+
+exports.updateStudent = async (req, res) => {
+  try {
+    const student = await Student.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        deletedStudent: student,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "not found",
+      message: error,
+    });
+  }
+};
