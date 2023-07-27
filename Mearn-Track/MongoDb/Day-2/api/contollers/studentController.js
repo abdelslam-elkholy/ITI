@@ -52,7 +52,25 @@ exports.updateStudent = async (req, res) => {
 
 exports.getAllStudents = async (req, res) => {
   try {
-    const students = await Student.find();
+    const students = await Student.aggregate([
+      {
+        $lookup: {
+          from: "faculties",
+          localField: "FacultyID",
+          foreignField: "_id",
+          as: "Faculty",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          FirstName: 1,
+          LastName: 1,
+          FacultyName: { $arrayElemAt: ["$Faculty.FacultyName", 0] },
+          courses: 1,
+        },
+      },
+    ]);
 
     res.status(200).json({
       status: "success",

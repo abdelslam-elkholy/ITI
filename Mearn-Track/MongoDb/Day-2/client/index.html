@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Faculty System V2</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Faculty System V2</h1>
+
+      <h3>Add Student</h3>
+      <div class="mb-3">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" required />
+      </div>
+      <div class="mb-3">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" required />
+      </div>
+      <div class="mb-3">
+        <label for="facultySelect">Select Faculty:</label>
+        <select class="form-control" id="facultySelect"></select>
+      </div>
+      <button class="btn btn-primary" id="submitStudentBtn">Add Student</button>
+
+      <hr />
+
+      <h3>All Students</h3>
+      <ul id="studentList"></ul>
+
+      <hr />
+
+      <h3>Aggregations</h3>
+      <p>
+        <strong>Sum of Final Marks for All Courses:</strong>
+        <span id="sumFinalMarks"></span>
+      </p>
+      <p><strong>Count of Students:</strong> <span id="studentCount"></span></p>
+      <p><strong>Students Count in Each Faculty:</strong></p>
+      <ul id="studentsCountInFaculties"></ul>
+      <p><strong>Students Full Name with Average Grade:</strong></p>
+      <ul id="studentsWithAvgGrade"></ul>
+      <p><strong>Students Data with Faculty:</strong></p>
+      <ul id="studentsWithFaculty"></ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
