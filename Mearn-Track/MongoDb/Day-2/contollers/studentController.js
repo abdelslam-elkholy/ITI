@@ -13,3 +13,21 @@ exports.createStudent = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.deleteStudent = async (req, res) => {
+  try {
+    const student = await Student.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({
+      status: "success",
+      data: {
+        deletedStudent: student,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "not found",
+      message: error,
+    });
+  }
+};
