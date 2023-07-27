@@ -68,3 +68,21 @@ exports.getAllStudents = async (req, res) => {
     });
   }
 };
+
+exports.getStudent = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.id);
+
+    res.status(200).json({
+      status: "Success",
+      data: {
+        student,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err,
+    });
+  }
+};
