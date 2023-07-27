@@ -19,7 +19,7 @@ exports.getAllFaculties = async (req, res) => {
   }
 };
 
-exports.createStudent = async (req, res) => {
+exports.createFaculty = async (req, res) => {
   try {
     const newFaculty = await Faculty.create(req.body);
     res.status(201).json({
