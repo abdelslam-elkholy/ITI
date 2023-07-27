@@ -10,6 +10,6 @@ exports.createStudent = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 };
