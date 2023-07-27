@@ -46,16 +46,11 @@ exports.getStats = async (req, res) => {
       {
         $unwind: "$courses",
       },
-      {
-        $project: {
-          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
-          courses: 1,
-        },
-      },
+
       {
         $group: {
           _id: "$_id",
-          FullName: { $first: "$FullName" },
+          FullName: { $first: { $concat: ["$FirstName", " ", "$LastName"] } },
           AvgGrade: { $avg: "$courses.grade" },
         },
       },

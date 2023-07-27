@@ -100,7 +100,7 @@ const createStudent = () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("New student added:", data);
+      alert("New student added:", data);
 
       document.getElementById("firstName").value = "";
       document.getElementById("lastName").value = "";
