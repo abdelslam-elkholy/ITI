@@ -4,13 +4,15 @@ exports.getStats = async (req, res) => {
   try {
     const sumGrades = await Student.aggregate([
       {
-        $group: {
-          _id: null,
+        $project: {
+          _id: 0,
+          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
           sumGrades: { $sum: "$courses.grade" },
         },
       },
     ]);
 
+    // const studentCount = await Student.countDocuments();
     const studentCount = await Student.aggregate([
       {
         $group: {
@@ -45,16 +47,16 @@ exports.getStats = async (req, res) => {
         $unwind: "$courses",
       },
       {
+        $project: {
+          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
+          courses: 1,
+        },
+      },
+      {
         $group: {
           _id: "$_id",
           FullName: { $first: "$FullName" },
           AvgGrade: { $avg: "$courses.grade" },
-        },
-      },
-      {
-        $project: {
-          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
-          courses: 1,
         },
       },
     ]);
@@ -77,7 +79,7 @@ exports.getStats = async (req, res) => {
     ]);
 
     const aggregations = {
-      sumGrades: sumGrades[0]?.sumFinalMarks || 0,
+      sumGrades,
       studentCount: studentCount[0]?.studentCount || 0,
       studentsCountInFaculties,
       studentsWithAvgGrade,

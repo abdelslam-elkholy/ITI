@@ -43,14 +43,19 @@ const fetchAggregations = async () => {
     const data = await fetch("http://localhost:3000/api/stats");
     const res = await data.json();
     const aggregations = res.data.aggregations;
-    document.getElementById("sumFinalMarks").textContent =
-      aggregations.sumFinalMarks;
+
+    console.log(aggregations);
+
+    const grades = document.getElementById("sumFinalMarks");
+    aggregations.sumGrades.map((grade) => {
+      grades.innerHTML += `<li>${grade.FullName}: ${grade.sumGrades}</li>`;
+    });
     document.getElementById("studentCount").textContent =
       aggregations.studentCount;
 
     let studentsCountInFacultiesList = "";
     for (const faculty of aggregations.studentsCountInFaculties) {
-      studentsCountInFacultiesList += `<li>${faculty._id}: ${faculty.count}</li>`;
+      studentsCountInFacultiesList += `<li>${faculty.Faculty.FacultyName}: ${faculty.count}</li>`;
     }
     document.getElementById("studentsCountInFaculties").innerHTML =
       studentsCountInFacultiesList;

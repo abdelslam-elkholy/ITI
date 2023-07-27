@@ -63,7 +63,7 @@ exports.getAllStudents = async (req, res) => {
       },
       {
         $project: {
-          _id: 1,
+          _id: 0,
           FirstName: 1,
           LastName: 1,
           FacultyName: { $arrayElemAt: ["$Faculty.FacultyName", 0] },
