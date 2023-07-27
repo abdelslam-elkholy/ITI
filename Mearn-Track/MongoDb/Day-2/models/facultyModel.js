@@ -5,6 +5,7 @@ const facultySchema = new mongoose.Schema({
   Address: String,
 });
 
+facultySchema.index({ FacultyName: 1 });
 const Faculty = mongoose.model("Faculty", facultySchema);
 
 module.exports = Faculty;

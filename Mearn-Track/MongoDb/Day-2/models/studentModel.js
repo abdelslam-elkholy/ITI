@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema({
   CourseID: { type: Number, required: [true, "Must Have Id"] },
-  grade: { type: String, required: [true, "Must Have Grade"] },
+  grade: { type: Number, required: [true, "Must Have Grade"] },
 });
 
 const studentSchema = new mongoose.Schema({
