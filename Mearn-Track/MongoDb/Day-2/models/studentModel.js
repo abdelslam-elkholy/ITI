@@ -9,7 +9,7 @@ const studentSchema = new mongoose.Schema({
   FirstName: { type: String, required: true, trim: true },
   LastName: { type: String, required: true, trim: true },
   IsFired: { type: Boolean, default: false },
-  //   FacultyID: { type: mongoose.Schema.Types.ObjectId, ref: "Faculty" },
+  FacultyID: { type: mongoose.Schema.Types.ObjectId, ref: "Faculty" },
   courses: [courseSchema],
 });
 

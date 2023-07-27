@@ -1,6 +1,6 @@
 const Student = require("./../models/studentModel");
 
-const getStats = async (req, res) => {
+exports.getStats = async (req, res) => {
   try {
     const sumGrades = await Student.aggregate([
       {
@@ -40,13 +40,7 @@ const getStats = async (req, res) => {
       },
     ]);
 
-    const studentsWithAvgGradeResult = await Student.aggregate([
-      {
-        $project: {
-          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
-          courses: 1,
-        },
-      },
+    const studentsWithAvgGrade = await Student.aggregate([
       {
         $unwind: "$courses",
       },
@@ -57,10 +51,15 @@ const getStats = async (req, res) => {
           AvgGrade: { $avg: "$courses.grade" },
         },
       },
+      {
+        $project: {
+          FullName: { $concat: ["$FirstName", " ", "$LastName"] },
+          courses: 1,
+        },
+      },
     ]);
 
-    // Aggregation to combine student data with faculty data
-    const studentsWithFacultyResult = await Student.aggregate([
+    const studentsWithFaculty = await Student.aggregate([
       {
         $lookup: {
           from: "faculties",
@@ -78,14 +77,19 @@ const getStats = async (req, res) => {
     ]);
 
     const aggregations = {
-      sumFinalMarks: sumFinalMarksResult[0]?.sumFinalMarks || 0,
-      studentCount: studentCountResult[0]?.studentCount || 0,
-      studentsCountInFaculties: studentsCountInFacultiesResult,
-      studentsWithAvgGrade: studentsWithAvgGradeResult,
-      studentsWithFaculty: studentsWithFacultyResult,
+      sumGrades: sumGrades[0]?.sumFinalMarks || 0,
+      studentCount: studentCount[0]?.studentCount || 0,
+      studentsCountInFaculties,
+      studentsWithAvgGrade,
+      studentsWithFaculty,
     };
 
-    res.json(aggregations);
+    res.status(200).json({
+      message: "success",
+      data: {
+        aggregations,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: "Error fetching aggregations", error });
   }
