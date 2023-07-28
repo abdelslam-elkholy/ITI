@@ -34,7 +34,7 @@ exports.deleteStudent = async (req, res) => {
 
 exports.updateStudent = async (req, res) => {
   try {
-    const student = await Student.findByIdAndDelete(req.params.id);
+    const student = await Student.findByIdAndUpdate(req.params.id);
 
     res.status(200).json({
       status: "success",

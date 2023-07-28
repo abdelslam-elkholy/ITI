@@ -7,10 +7,4 @@ router
   .post(facultyController.createFaculty)
   .get(facultyController.getAllFaculties);
 
-// router
-//   .route("/:id")
-//   .get(facultyController.getStudent)
-//   .patch(facultyController.updateStudent)
-//   .delete(facultyController.deleteStudent);
-
 module.exports = router;
