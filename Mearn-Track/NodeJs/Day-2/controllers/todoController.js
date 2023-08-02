@@ -28,11 +28,14 @@ exports.createTodo = async (req, res, next) => {
 };
 
 exports.getTodos = async (req, res, next) => {
+  const skip = req.query.skip * 1 || 0;
+  const limit = req.query.limit * 1 || data.length;
+  const pagenation = data.splice(skip, limit);
   try {
     res.status(200).json({
       message: "success",
       data: {
-        data,
+        Todos: pagenation,
       },
     });
   } catch (err) {
@@ -93,7 +96,6 @@ exports.deleteTodo = (req, res, next) => {
   const todoIndex = data.findIndex((el) => el.id == id);
 
   if (todoIndex != -1) {
-    writeToDb(data);
     res.status(200).json({
       message: "success",
       data: {
@@ -101,6 +103,7 @@ exports.deleteTodo = (req, res, next) => {
       },
     });
     data.splice(todoIndex, 1);
+    writeToDb(data);
     return;
   }
 
