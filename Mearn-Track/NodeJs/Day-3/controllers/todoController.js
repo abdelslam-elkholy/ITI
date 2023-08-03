@@ -19,7 +19,7 @@ exports.createTodo = async (req, res, next) => {
 
 exports.getTodos = async (req, res, next) => {
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find().populate("ownerId");
     res.status(200).json({
       message: "success",
       data: {
