@@ -1,4 +1,5 @@
 const User = require("./../models/userModel");
+const Todo = require("./../models/todoModel");
 
 exports.getAllUsers = async (req, res, next) => {
   try {
@@ -65,6 +66,23 @@ exports.deleteUser = async (req, res) => {
       status: "success",
       data: {
         user,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: "failed",
+      err,
+    });
+  }
+};
+
+exports.getUserTodos = async (req, res, next) => {
+  try {
+    const userTodos = await Todo.find({ ownerId: req.params.id });
+    res.status(200).json({
+      status: "success",
+      data: {
+        userTodos,
       },
     });
   } catch (err) {
