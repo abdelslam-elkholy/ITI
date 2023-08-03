@@ -28,6 +28,7 @@ exports.createUser = async (req, res) => {
       password: req.body.password,
       confirmPassword: req.body.confirmPassword,
     });
+
     res.status(201).json({
       status: "success",
       data: {
@@ -46,6 +47,9 @@ exports.updateUser = async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
+
+    if (!user) next(err);
+
     res.status(201).json({
       status: "success",
       data: {
@@ -62,6 +66,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) next(err);
     res.status(201).json({
       status: "success",
       data: {

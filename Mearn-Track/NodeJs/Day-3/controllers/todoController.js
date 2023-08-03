@@ -19,7 +19,10 @@ exports.createTodo = async (req, res, next) => {
 
 exports.getTodos = async (req, res, next) => {
   try {
-    const todos = await Todo.find().populate("ownerId");
+    const skip = req.query.skip * 1 || 0;
+    const limit = req.query.limit * 1 || (await Todo.countDocuments());
+
+    const todos = await Todo.find().populate("ownerId").skip(skip).limit(limit);
     res.status(200).json({
       message: "success",
       data: {
@@ -37,6 +40,7 @@ exports.getTodos = async (req, res, next) => {
 exports.getTodo = async (req, res, next) => {
   try {
     const todo = await Todo.findById(req.params.id);
+    if (!todo) next(err);
 
     res.status(200).json({
       message: "success",
