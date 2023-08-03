@@ -1,12 +1,13 @@
 const fs = require("fs");
-const data = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
-
+const readData = () => JSON.parse(fs.readFileSync("./db.json", "utf-8"));
+const data = readData();
 const writeToDb = (file) => {
   fs.writeFileSync("./db.json", JSON.stringify(file));
 };
 
 exports.createTodo = async (req, res, next) => {
   try {
+    const data = readData();
     const todo = req.body;
     todo.id = data.length ? data[data.length - 1].id + 1 : 1;
 
@@ -28,6 +29,7 @@ exports.createTodo = async (req, res, next) => {
 };
 
 exports.getTodos = async (req, res, next) => {
+  const data = readData();
   const skip = req.query.skip * 1 || 0;
   const limit = req.query.limit * 1 || data.length;
   const pagenation = data.splice(skip, limit);
@@ -35,7 +37,7 @@ exports.getTodos = async (req, res, next) => {
     res.status(200).json({
       message: "success",
       data: {
-        Todos: pagenation,
+        data: pagenation,
       },
     });
   } catch (err) {
@@ -47,6 +49,7 @@ exports.getTodos = async (req, res, next) => {
 };
 
 exports.getTodo = (req, res, next) => {
+  const data = readData();
   const { id } = req.params;
   const todo = data.find((el) => el.id == id);
 
@@ -67,6 +70,7 @@ exports.getTodo = (req, res, next) => {
 };
 
 exports.updateTodo = (req, res, next) => {
+  const data = readData();
   const { id } = req.params;
   const { title } = req.body;
 
@@ -91,6 +95,7 @@ exports.updateTodo = (req, res, next) => {
 };
 
 exports.deleteTodo = (req, res, next) => {
+  const data = readData();
   const { id } = req.params;
 
   const todoIndex = data.findIndex((el) => el.id == id);
