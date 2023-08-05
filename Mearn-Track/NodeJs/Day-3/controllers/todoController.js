@@ -1,42 +1,33 @@
 const Todo = require("./../models/todoModel");
 const catchAsync = require("./../utils/catchAsync");
+const { AppError } = require("./errorHandler");
+exports.createTodo = catchAsync(async (req, res, next) => {
+  const todo = await Todo.create(req.body);
+  res.status(201).json({
+    message: "created",
+    data: {
+      todo,
+    },
+  });
+});
 
-exports.createTodo = async (req, res, next) => {
-  try {
-    const todo = await Todo.create(req.body);
-    res.status(201).json({
-      message: "created",
-      data: {
-        todo,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      message: "failed",
-      err,
-    });
-  }
-};
+exports.getTodos = catchAsync(async (req, res, next) => {
+  const skip = req.query.skip * 1 || 0;
+  const limit = req.query.limit * 1 || (await Todo.countDocuments());
 
-exports.getTodos = async (req, res, next) => {
-  try {
-    const skip = req.query.skip * 1 || 0;
-    const limit = req.query.limit * 1 || (await Todo.countDocuments());
+  const todos = await Todo.find().populate("ownerId").skip(skip).limit(limit);
+  if (!todos)
+    return next(
+      AppError(`There Is no Todo With The Id ${req.params.id}`, "404")
+    );
 
-    const todos = await Todo.find().populate("ownerId").skip(skip).limit(limit);
-    res.status(200).json({
-      message: "success",
-      data: {
-        data: todos,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({
-      message: "Not Found",
-      err,
-    });
-  }
-};
+  res.status(200).json({
+    message: "success",
+    data: {
+      data: todos,
+    },
+  });
+});
 
 exports.getTodo = async (req, res, next) => {
   try {
