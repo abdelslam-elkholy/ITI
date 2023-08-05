@@ -9,7 +9,7 @@ const createToken = (id) => {
   });
 };
 
-exports.createUser = catchAsync(async (req, res) => {
+exports.signup = catchAsync(async (req, res) => {
   const user = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -24,5 +24,22 @@ exports.createUser = catchAsync(async (req, res) => {
     data: {
       user,
     },
+  });
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new AppError("You mUst Provide Email and password", 400));
+  }
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user || !(await user.validatePassword(user.password)))
+    return next(new AppError("Invalid Email Or Password", 401));
+
+  const token = createToken(user.id);
+  res.status(200).json({
+    message: "success",
+    token,
   });
 });
