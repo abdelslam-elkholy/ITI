@@ -1,8 +1,9 @@
 const Todo = require("./../models/todoModel");
 const catchAsync = require("./../utils/catchAsync");
 const { AppError } = require("./errorHandler");
+
 exports.createTodo = catchAsync(async (req, res, next) => {
-  const todo = await Todo.create(req.body);
+  const todo = await Todo.create({ title: req.body.title, ownerId: req.id });
   res.status(201).json({
     message: "created",
     data: {
@@ -16,10 +17,6 @@ exports.getTodos = catchAsync(async (req, res, next) => {
   const limit = req.query.limit * 1 || (await Todo.countDocuments());
 
   const todos = await Todo.find().populate("ownerId").skip(skip).limit(limit);
-  if (!todos)
-    return next(
-      AppError(`There Is no Todo With The Id ${req.params.id}`, "404")
-    );
 
   res.status(200).json({
     message: "success",

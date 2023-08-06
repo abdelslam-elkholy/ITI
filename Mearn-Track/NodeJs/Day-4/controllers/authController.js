@@ -4,12 +4,12 @@ const { AppError } = require("./errorHandler");
 const jwt = require("jsonwebtoken");
 
 const createToken = (id) => {
-  jwt.sign({ id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
 
-exports.signup = catchAsync(async (req, res) => {
+exports.signup = catchAsync(async (req, res, next) => {
   const user = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -17,7 +17,7 @@ exports.signup = catchAsync(async (req, res) => {
     confirmPassword: req.body.confirmPassword,
   });
 
-  const token = createToken(user_id);
+  const token = createToken(user._id);
   res.status(201).json({
     status: "success",
     token,
@@ -34,10 +34,11 @@ exports.login = catchAsync(async (req, res, next) => {
   }
   const user = await User.findOne({ email }).select("+password");
 
-  if (!user || !(await user.validatePassword(user.password)))
+  if (!user || !(await user.validatePassword(password, user.password))) {
     return next(new AppError("Invalid Email Or Password", 401));
+  }
 
-  const token = createToken(user.id);
+  const token = createToken(user._id);
   res.status(200).json({
     message: "success",
     token,
