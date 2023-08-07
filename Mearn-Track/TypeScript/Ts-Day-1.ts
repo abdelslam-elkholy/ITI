@@ -1,4 +1,5 @@
 import { LikesComponent } from "./likes-component";
+
 const numVariable: number = 25;
 const str: string = "John";
 const bol: boolean = true;
@@ -24,7 +25,6 @@ enum StatusCode {
 const response: StatusCode = StatusCode.Success;
 console.log(response);
 
-// Interfaces & Classes & Inheritance
 interface CircleShape {
   radius: number;
   calculateArea(): number;
@@ -48,7 +48,7 @@ console.log(circle.calculateArea());
 function gen<T>(arg: T): T {
   return arg;
 }
-console.log(gen("asas"));
+console.log(gen("sas"));
 console.log(gen(5));
 
 const likes = new LikesComponent(false, 9);
