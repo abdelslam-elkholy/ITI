@@ -49,7 +49,7 @@ console.log(circle.calculateArea());
 function gen(arg) {
     return arg;
 }
-console.log(gen("asas"));
+console.log(gen("sas"));
 console.log(gen(5));
 var likes = new likes_component_1.LikesComponent(false, 9);
 console.log(likes.likesCount);
