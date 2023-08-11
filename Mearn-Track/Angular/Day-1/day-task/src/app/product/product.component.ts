@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from './../models/store';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

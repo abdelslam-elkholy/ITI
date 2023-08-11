@@ -15,12 +15,93 @@ export class Store {
     this.products = [
       {
         id: 1,
-        name: 'sneaker',
-        quantity: 5,
+        name: 'Meadow Wooden Top Coffee Table',
+        quantity: 0,
+        price: 1200,
+        categoryID: 1,
+        Material: 'Wood',
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/163906877-163906877-HC13042022_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp-2x$',
+      },
+      {
+        id: 5,
+        name: 'Trixia 4-Seater Glass Top Dining Table',
+        price: 30000,
+        quantity: 8,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/163645951-163645951-HC07102021_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 1,
+        Material: 'Metal',
+      },
+      {
+        id: 25,
+        name: 'Gasha Marble Top Side Table',
+        price: 14000,
+        quantity: 10,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/160079085-160079085-HC020518_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 1,
+        Material: 'Metal',
+      },
+      {
+        id: 7,
+        name: 'Ventura Fabric Dining Chair',
+        price: 1500,
+        quantity: 2,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/161257427-161257427-HC280119_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 2,
+        Material: 'Upholstered Seating',
+      },
+      {
+        id: 17,
+        name: 'Ventura Fabric Dining Chair',
+        price: 1500,
+        quantity: 1,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/162640761-162640761-HC23092020_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 2,
+        Material: 'Upholstered Seating',
+      },
+      {
+        id: 9,
+        name: 'Boston Study Chair',
         price: 1000,
-        priceAfterDiscount: 1000 / discountOffers['no discount'],
-        img: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHkApwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAgQFBgcIAwH/xABJEAABAwMBBAUHBQ0HBQAAAAABAAIDBAURIQYSMUEHE1FhcRQigZGhsbIyM3PB0QgjNDZCU2JkcnSSosIVJFJjk/DxNVSE0uH/xAAaAQACAwEBAAAAAAAAAAAAAAAABQIEBgED/8QAJhEAAgEDAwQCAwEAAAAAAAAAAAECAwQRBTIzEiExcRMVQVLxof/aAAwDAQACEQMRAD8A29qUktSkAV3a6u2loIoJdmrVTXHV3XxSy7jsaY3dcdqqNN0x0VPUmj2jslwtVS3R43d8MPeNHY8AVpFwqW0VFUVTmOe2GJ0ha3iQBnC5m6QdsDtldIKvyBlHHTxmNg3997gTnLjgegcsnU5QBb29NN3gqHiW226shDjgwyPjOOXHPuVjtPTXs9VEMuVLXUDv8ZYJWetuvsWExRNcwyyPLGA7vmtyfUvF7gXkjQFAGyXPpguVDdanyKltdztgkPUuhqN2Us5ZGSR/Cpez9Nuz1U4MudLW29/N5YJYx6W6+xYNDE6QuLAPNGSScAJFQWvfluCAACe0oA3/AGv2srro2jl6Pto7VI5od19M6eISScN3DZB48xxVag6Xdp7PUeTbRWanlePlDDoHeIPnA+49qx4M33AY3snQYypGOFtNG9lS4NO6Q2Jhyd7vxoPeugb3Z+mTZmuwyubV26Q/no95n8Tc+0BQt16WLpR3SfyCktdytoeRDJBMd4t5ZIJwe4hYsRlDRquAb9aumO0Tvijulvq6KWTQYLZG5zjuPsStpOk1rW0kuyDrddmvBM0D5tyVvDGGZDjz5FYbExvk0k7gS+EsczJ55wmrw1ziS0YJzjkgDbLd01RElt3sFVT7vynwSteAO3zt31KQ2h6T6R1vik2VrrbJWB4MtPcXmElhGfN3i0E5xzWJWyIT1McL87jzukZ7VGTO33DLWjDQ3TsHDP8AvkgDZ6DppqYZHRXuwAFmd51JPr/C7/2Vpt3S1shWgCSulo3kA7tTCR/M3LfaudKMDrWN5E4RK3dlcwABsbixoHYCgDptnSJsrNcqOgprrHUz1j9yLqGl7Q7kHEcM96tS5z6H7dR3La+KOvp2TMjhfKwP/Je0tw4d4XRiABCEIAS1KSWpSAIzaWWGKxVxqZWRxuge0ue/cGoIxnB19B8CuR5g9kjhu4bnQPdrjvOmq2vp7rJ43WumY8iEtfIW9rsgZ9XvWQQzvL2syPOIAPYugFLE6ejkDHxb7ZMluTkAjjpnsXn5DN2s9Z+xXSR0MI6lkbQxmmMak9q8mvpucYC7g5kr1ttFwqY6ttJSy1LhEMtgY55HnDjom8lgvTSc2a5a9lJIfqW6bFbL01PSx3Gcu8oni0jGjWtPDPafcrcyhp8Yx7Vw940k1mTOXILFeGzRn+yLiMOGvkcnb4JFzY+CumjnY+KRrzlkjS1w56g6rp65GhoYN6fPnaNa06lZjVWZk9VJKWxvL3E5fG1x9JIyVTubyFu8PuWqGnyrrMX/AIZKCO0etKGM8QtWFgj/ADMX+hH9iV/YMf5mL/Qj+xVftofqyz9NU/ZGc0kE1Rb5+ohllwWZ6phfz7l5ttteRkW+sP8A4z/sW17INhstd1kpc2Mj5MWGjPaQMZ0ytHjkEjGvY/ea4ZBHNXre4jXj1IX3NrK3lhnL9mtd08vgxa7h8samkkA9ZChpbfUxSvjk8nbI1xaWmrhyCDqMb+V1rVN3oXNyTvDHFZhtZbqbZeSIQUVNJDW5a2R7AXbw13Tp4HKuUoKbwyhXqOnHqSyZTY7FcbjViOkiieWec8+UR4aO0nKZVELnVEpY7faZHEOactcMnUHd1C6H2fxBE5zoonT4aN5kYHAcBgcBkrPelW301sno6+3RMhZVl7ZY2aN3hghwHLIOvhnmVOdJRZCjX+Q8Ohcx0m1nW1j2Rb0JZG6R5bknkNMEnTnyXQGVyZTzyGRvnc10/spUSVWzNqnncXSyUkTnuPM7o1XjJYLCJVCEKJ0S1KSWpSAMZ+6AH95tB/ypPe1ZDDpPGf0x71sH3QA++2g/oS+9qx+LSZn7Q96ALfWfPyftFMpD5p8E9rfn5PEpi/gfBSIG9Wxx8hpfoWfCE+DiOajrVrbaM/5EfwhPxwURp+EVXa+Z/l0bc6CMYHpKgmSkFTe2H4fF9EPeVADisxqPO2aCx4UOxVY0QaglNihoS/5JeC50IctkJIPYr9s3K59mgLjwLgPDKz9gV32bfi0xN7C73pzpOet+hNrKXxL2TZIOiq+3FsF0ZbGE4bDWCQjmcMOntVgbKCCc8Oahdp6mWGipjEcOe92dNfkk4WjociMndPFGTZ4RkRDqmAu/Kc4cCezKo/TGwttNoc7GXzyHTl5oV6oIsU0LHHOGDePfzVK6bvNttkYOUsvwtVis+5XtI/kzCl+caun9jRjZKzj9Si+ELmCl+cb4rqHY8Y2Us/7lF8AVafgvol0IQvM6JalJLUpAGO/dADW0n9CX3tWON0kb4hbN0/jzLT4S/wBKxgfKHiugW+u+ff4pm/gfBPKz55/imTuC6QZu9nObVRH9Xj+EKQHBRtj1s9Af1aP4QpIcFAaraiqbYD+/RfRD3lV9WDbD8Nh+i+sqvhZnUuaQ/seGIrCW1ISwly8l49G8QrjYsi2ROb3g+s6qnNVw2eeWUcQd8hwPrBTvSt79CTWeFeyVZgYaBoeKj9o4BPHStPBsmpHZup9Mdzzm9ib1Z62OnJdgbxJPoWhpPE0zK3Eeqk0NGGTAEbMNHAHsVB6aXOdQ2YvIz1svD9lqsV92vttpxDE8Pmdw1VB6QbvNebfbZi13k7ZJBE8tcA/RuSCQMjhqArdSL6clO3klPp/hUKX5xq6i2S/Faz/uUPwBcu0metb4rqPZP8V7R+5Q/AFUmMUSqEIXmdEtSklqUgDI+n0febSfpf6Vip01W29PYzS2k98v9KxJ/BAFvrfnn+KZOTysP31yZvOikQZulg1stvz/ANtH8IUkFGbP/wDRLcf1WP4QpNqixqtqKtth+Fw/RfWVX1YNsPwqH6P6yq7zWZ1J4rSH1jxIVlLakcUsJYmXz0ZxCttjdijjYflavZ3/AO8KpRlW6iie6zU74gOsYCWkjvKeaTvYk1niXsk2va6JzgQc6hVTbmtkorXQkVPUCWdwccZJ83OBwHtU5RVb3SmJ7CC4BwHb2+1VzpZDmWi1brA4+UnPhuHOFo6HIjKXKzRkU1t6jomSeSUzpZXO3nVE+JNdNWjgOA7eCgdpLhVXGGGWsnkleJXAb/LQdwHsT5lPMXiSKhZ52o35MuA7032o69tFRtqGQR/fJC1kXg3imFeL6GxTaTj8yiiDpPnW+K6i2U/Fi0fuUPwBcvUfzw8V1HsuMbN2kfqcPwBLZjxEmhCF5nRLUpJalIAy3p4ppX2i31TY3Ohhke2Rw4NLgMZ8cLDchjsuAIackHmuwJ4YqiJ0M8bZInjDmPGQ4dhCpdx6KNj62QyC3SUxPEU1Q9jfQ3OB6AgDHa4/fXFMnHVSu0tDNa7vVUdSwxujeQ3eHym50cO0Ec1FxTGF+80A6YweakRN02cINgtp45pY/hClGqL2ecX2G3PPF1NGf5QpMHVRGkdqKxth+EQfsH3quqx7YfPwfsH3qurN6is1mPbHiR9xolNXwL7zSzBfPRiu1geDb4YXDXdJHrKpLNSrjb2uFrpJY/lR5z3jJTvSt7Ems8S9kg6lbvl7cA8ieRVV6T6mCmtdA+oOJOtcI2gZ3nbvu+xWs1QMO9xVP6U6mWltlrkiLW707t4vHLc4d5Wit+RGUu0nRkmZ2+oqagGSYPDMAAR/eWHvJPnHwCabQYht1OxoZ58rw8NbgAgN4f8A3VN5bmcuc2RxcTq9xx/x6PWtU6O9j6C52Z1Tf7WyZjpM0zagHOManHDB+pX7maVMWWdJxqrsY9a4ZquvhpaaN0tRK7djjaNXHuXU1npn0VpoqWXG/DTsjdg6ZDQCkW2zWy1M3bZb6WkBGD1ETWZ9SfpZKWR0kCEIUTolqUktSkACEIQBHXex2y9RCO6UMFSG/JL2+c3wPEehVSo6J9mJXExNroMnOI6ouH82VfF8QBWqejjttPFQwl5jp2CNhecuIAwM969tcZHYpKtoRUO32PLHgdmQfFMXUNazgyOQfouwfUftQXoVYOOMlS2nMjnQGbR26dPSoFWTa+OZj4OviLDunGSDzHYq2s7qHKzQWDTopoCV9aV8bg5ylADOnBK+l+S8pd8HtGrjYy80TG7+N3UDuJ/5VNjOuqsdtor11lNUUsDJaPdwRvhpLefE9uqd6VuYl1niXsnIYWFzgdMnO7yRedmbXtLDDDdonysp3FzBHM6PBIwfkkcl7RW+tkdmbqohyw4uPp5e1S8ELYYw0ZJ5k808Ta7ozjWSAtmwuzFseySlstL1jNWvlb1rge3Ls696sQGMY5L6hDbfkEkvAIQhcOghCEAJalJLUpAAhCEACEIQAIQvhQBFbQ2Zl4pBGX9XKw5jfjOO49yodbs1eaRxzRumaOD4HBwPo4+xah+UF8HD1qrXs6dfvLyXLa+q26xHwZCaCvacOttfn91kP1L0itlylOI7bW5/Sgc33gLW/wDCg8Qqa0iknuZd+6qtbUUC1bI3Cd7XVu7TR8wSHP8AUNB61fKeFlPCyGJuGMaGtHYEscV9V6jb06KxEXXF1UuHmbPqEIVgrghCEACEIQAIQhAH/9k=',
-        categoryId: 55,
+        quantity: 10,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/159671547-159671547-HCB1226OCT17_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 2,
+        Material: 'Upholstered Seating',
+      },
+      {
+        id: 10,
+        name: 'Coby Extendable TV Unit',
+        price: 13000,
+        quantity: 0,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/163723189-163568026-HC16082021_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 3,
+        Material: 'Wood',
+      },
+      {
+        id: 15,
+        name: 'Accent TV Unit',
+        price: 36999,
+        quantity: 4,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/161684469-161684469-HC210519_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 3,
+        Material: 'MDF',
+      },
+      {
+        id: 55,
+        name: 'Plymouth TV Unit',
+        price: 36999,
+        quantity: 3,
+        PrdImgURL:
+          'https://media.homecentre.com/i/homecentre/163688823-163688823-HC05102021_01-2100.jpg?fmt=auto&$quality-standard$&sm=c&$prodimg-d-sqr-pdp$',
+        categoryID: 3,
+        Material: 'wood',
       },
     ];
   }

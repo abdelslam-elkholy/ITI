@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { ProductComponent } from './product/product.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { ProductCardDirective } from './product-card.directive';
+import { CreditCardPipe } from './credit-card.pipe';
 
 @NgModule({
   declarations: [
@@ -13,12 +15,12 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HeaderComponent,
     ProductComponent,
     FooterComponent,
-    SideBarComponent
+    SideBarComponent,
+    ProductCardDirective,
+    CreditCardPipe,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
