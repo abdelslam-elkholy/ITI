@@ -1,0 +1,35 @@
+<div>
+  <label for="minPrice">Minimum Price:</label>
+  <input type="number" [(ngModel)]="priceValue" />
+</div>
+<app-product
+  [filterValue]="priceValue"
+  (addToCartEvent)="addToCart($event)"
+></app-product>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cartItem of cartItems; let i = index">
+      <td>{{ cartItem.product.name }}</td>
+      <td>{{ cartItem.product.price | currency : "USD" : "symbol" }}</td>
+      <td>
+        {{ cartItems[i].quantity }}
+      </td>
+      {{
+        cartItem.product.price * cartItems[i].quantity
+      }}
+      <td>
+        <button (click)="removeFromCart(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
