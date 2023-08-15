@@ -34,15 +34,11 @@ export class SingleProductComponent implements OnInit {
   }
 
   previous() {
-    console.log('hey im working fine');
-
     this.currentIndex = this.idsList.indexOf(this.id);
     this.router.navigate(['/singleProduct', this.idsList[--this.currentIndex]]);
   }
 
   next() {
-    console.log('hey im working fine');
-
     this.currentIndex = this.idsList.indexOf(this.id);
     this.router.navigate([
       '/singleProduct',
