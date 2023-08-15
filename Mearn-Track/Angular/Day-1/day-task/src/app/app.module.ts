@@ -10,6 +10,15 @@ import { ProductCardDirective } from './product-card.directive';
 import { CreditCardPipe } from './credit-card.pipe';
 import { AboutComponent } from './about/about/about.component';
 import { FilteredWithPriceComponent } from './filtered-with-price/filtered-with-price.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  // { path: 'contact', component: ContactComponent },
+];
 
 @NgModule({
   declarations: [
@@ -22,8 +31,10 @@ import { FilteredWithPriceComponent } from './filtered-with-price/filtered-with-
     CreditCardPipe,
     AboutComponent,
     FilteredWithPriceComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
