@@ -13,14 +13,20 @@ import { FilteredWithPriceComponent } from './filtered-with-price/filtered-with-
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SingleProductComponent } from './single-product/single-product.component';
-
+import { Location } from '@angular/common';
+import { CategoryComponent } from './category/category.component';
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   {
-    path: 'single-product/:id',
+    path: 'singleProduct/:id',
     component: SingleProductComponent,
+    title: 'Products Details',
+  },
+  {
+    path: 'productCategory/:id',
+    component: CategoryComponent,
     title: 'Products Details',
   },
 ];
@@ -38,10 +44,11 @@ const routes: Routes = [
     FilteredWithPriceComponent,
     HomeComponent,
     SingleProductComponent,
+    CategoryComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [],
+  providers: [Location],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,54 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <ul class="d-flex justify-content-around w-100 p-2">
+      <li (click)="ProductCategory(1)" class="link">Category-1</li>
+      <li (click)="ProductCategory(2)" class="link">Category-2</li>
+      <li (click)="ProductCategory(3)" class="link">Category-3</li>
+    </ul>
+    <div class="row justify-content-center">
+      <ng-container *ngFor="let product of products">
+        <div
+          appProductCard
+          [ngStyle]="{ 'background-color': product.quantity == 1 && 'yellow' }"
+          class="card col-3 m-3"
+          (click)="ProductDetails(product.id)"
+        >
+          <img
+            class="card-img-top"
+            src="{{ product.PrdImgURL }}"
+            alt="{{ product.name }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name | uppercase }}</h5>
+            <!-- <h3 *ngIf="product.priceAfterDiscount != product.price">
+            we offr you dscount of
+            {{ (product.price - product.priceAfterDiscount).toFixed(2) }}
+          </h3> -->
+            <p>{{ product.price | currency : "USD" : "symbol" }}</p>
+            <span
+              [ngSwitch]="product.quantity"
+              style="color: red; display: block"
+            >
+              <ng-container *ngSwitchCase="0">Out Of stock </ng-container>
+              <ng-container *ngSwitchCase="1">Last Item </ng-container>
+              <ng-container *ngSwitchCase="2">Last 2 Item </ng-container>
+              <ng-container *ngSwitchDefault>In Stock </ng-container>
+            </span>
+  
+            <!-- <input
+              type="number"
+              [(ngModel)]="addedQuan[product.id]"
+              min="0"
+              [max]="availableQuan(product)"
+            /> -->
+            <!-- <button
+              (click)="addToCart(product)"
+              [disabled]="addedQuan[product.id] === 0"
+            >
+              Add to Cart
+            </button> -->
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  

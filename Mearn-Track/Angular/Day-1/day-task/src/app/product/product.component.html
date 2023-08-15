@@ -1,4 +1,9 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
+  <ul class="d-flex justify-content-around w-100 p-2">
+    <li (click)="ProductCategory(1)" class="link">Category-1</li>
+    <li (click)="ProductCategory(2)" class="link">Category-2</li>
+    <li (click)="ProductCategory(3)" class="link">Category-3</li>
+  </ul>
   <div class="row justify-content-center">
     <ng-container *ngFor="let product of products">
       <div

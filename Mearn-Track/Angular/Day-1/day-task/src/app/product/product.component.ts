@@ -73,4 +73,8 @@ export class ProductComponent implements OnInit {
   ProductDetails(id: number) {
     this.router.navigate(['/singleProduct', id]);
   }
+
+  ProductCategory(id: number) {
+    this.router.navigate(['/productCategory', id]);
+  }
 }
