@@ -8,7 +8,7 @@ import { Iproduct } from '../models/iproduct';
 })
 export class FilteredWithPriceComponent {
   priceValue: number = 0;
-
+  //
   cartItems: any[] = [];
 
   addToCart({ product, quantity }: { product: Iproduct; quantity: number }) {

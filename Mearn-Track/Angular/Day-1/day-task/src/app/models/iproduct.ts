@@ -8,6 +8,7 @@ export interface Iproduct {
   PrdImgURL: string;
   categoryID: number;
   Material: string;
+  details: string;
   //   discount: discountOffers;
   //   categoryId: ICategory;
 }

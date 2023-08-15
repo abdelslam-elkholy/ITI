@@ -12,12 +12,17 @@ import { AboutComponent } from './about/about/about.component';
 import { FilteredWithPriceComponent } from './filtered-with-price/filtered-with-price.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { SingleProductComponent } from './single-product/single-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  // { path: 'contact', component: ContactComponent },
+  {
+    path: 'single-product/:id',
+    component: SingleProductComponent,
+    title: 'Products Details',
+  },
 ];
 
 @NgModule({
@@ -32,6 +37,7 @@ const routes: Routes = [
     AboutComponent,
     FilteredWithPriceComponent,
     HomeComponent,
+    SingleProductComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],

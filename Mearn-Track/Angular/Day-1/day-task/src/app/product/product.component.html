@@ -1,10 +1,11 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
   <div class="row justify-content-center">
-    <ng-container *ngFor="let product of filteredProducts">
+    <ng-container *ngFor="let product of products">
       <div
         appProductCard
         [ngStyle]="{ 'background-color': product.quantity == 1 && 'yellow' }"
         class="card col-3 m-3"
+        (click)="ProductDetails(product.id)"
       >
         <img
           class="card-img-top"
@@ -28,18 +29,18 @@
             <ng-container *ngSwitchDefault>In Stock </ng-container>
           </span>
 
-          <input
+          <!-- <input
             type="number"
             [(ngModel)]="addedQuan[product.id]"
             min="0"
             [max]="availableQuan(product)"
-          />
-          <button
+          /> -->
+          <!-- <button
             (click)="addToCart(product)"
             [disabled]="addedQuan[product.id] === 0"
           >
             Add to Cart
-          </button>
+          </button> -->
         </div>
       </div>
     </ng-container>
