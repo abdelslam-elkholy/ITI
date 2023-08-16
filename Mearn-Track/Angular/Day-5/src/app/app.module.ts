@@ -10,7 +10,6 @@ import { ProductsComponent } from './Components/products/products.component';
 import { CategoryComponent } from './Components/category/category.component';
 import { SingleProductComponent } from './Components/single-product/single-product.component';
 import { CarouselComponent } from './Components/carousel/carousel.component';
-import { SidebarComponent } from './Components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +21,9 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
     CategoryComponent,
     SingleProductComponent,
     CarouselComponent,
-    SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
