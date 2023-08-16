@@ -23,8 +23,6 @@ export class SingleProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.idsList = this.ProductsService.ProductsIds;
-
     this.activateRoute.paramMap.subscribe((param) => {
       this.id = Number(param.get('id')) || 0;
 
