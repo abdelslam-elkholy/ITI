@@ -1,8 +1,8 @@
 <main class="d-flex justify-content-around flex-wrap m-4">
   <div
     *ngFor="let product of products"
-    class="card border-0 shadow mb-5"
-    style="width: 18rem"
+    class="card col-3 border-0 shadow m-3"
+    (click)="ProductDetails(product.id)"
   >
     <img
       [src]="product.PrdImgURL"

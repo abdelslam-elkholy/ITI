@@ -29,7 +29,9 @@ export class SingleProductComponent implements OnInit {
         this.product = data;
       });
 
-      !this.product && this.location.back();
+      console.log(
+        'working and id is:' + this.id + ' and product is ' + this.product
+      );
     });
   }
 }
