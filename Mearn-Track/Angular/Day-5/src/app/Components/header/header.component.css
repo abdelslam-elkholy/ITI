@@ -1,0 +1,25 @@
+#myNav {
+  background-color: #feee00 !important;
+}
+#logoNoon {
+  height: 24px;
+  width: 100px;
+}
+.form-control {
+  /* width: 100%; */
+  width: 1050px;
+  height: 36px;
+}
+.iconImg {
+  width: 17px;
+  height: 17px;
+}
+.flag {
+  width: 29px;
+  height: 29px;
+}
+.myItems:not(.dropdown-menu):hover {
+  /* background-color: #878787; */
+  opacity: 0.4;
+  /* color: red !important; */
+}
