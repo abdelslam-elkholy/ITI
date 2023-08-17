@@ -61,6 +61,7 @@ import { Router } from '@angular/router';
 // }
 export class ProductComponent implements OnInit {
   products!: Iproduct[];
+
   constructor(
     private ProductsService: ProductsService,
     private router: Router

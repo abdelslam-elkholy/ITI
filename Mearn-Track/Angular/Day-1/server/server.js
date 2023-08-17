@@ -5,10 +5,9 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-// Custom route for searching items by name
 server.get("/products/search", (req, res) => {
   const searchTerm = req.query.name;
-  const items = router.db.get("items").value();
+  const items = router.db.get("products").value();
   const filteredItems = items.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

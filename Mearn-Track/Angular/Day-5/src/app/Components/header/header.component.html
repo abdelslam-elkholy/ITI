@@ -62,8 +62,14 @@
           type="search"
           placeholder="What are you looking for?"
           aria-label="Search"
+          [value]="searchValue"
+          (input)="filter()"
         />
-        <div id="dropdown" class="dropdown-content"></div>
+        <div id="dropdown" class="dropdown-content show">
+          <ng-container *ngFor="let product of products">
+            <a (click)="ProductDetails(product.id)">{{ product.name }}</a>
+          </ng-container>
+        </div>
       </form>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

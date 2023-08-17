@@ -28,10 +28,6 @@ export class SingleProductComponent implements OnInit {
       this.ProductsService.getProductByID(this.id).subscribe((data) => {
         this.product = data;
       });
-
-      console.log(
-        'working and id is:' + this.id + ' and product is ' + this.product
-      );
     });
   }
 }

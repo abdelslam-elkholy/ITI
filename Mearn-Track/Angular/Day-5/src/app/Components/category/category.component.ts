@@ -32,4 +32,7 @@ export class CategoryComponent implements OnInit {
   ProductDetails(id: number) {
     this.router.navigate(['/singleProduct', id]);
   }
+  productCategory(id: number) {
+    this.router.navigate(['/productCategory', id]);
+  }
 }
