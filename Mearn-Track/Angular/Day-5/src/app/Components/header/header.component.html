@@ -1,7 +1,7 @@
 <header>
   <nav id="myNav" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="./index.html"
+      <a class="navbar-brand" routerLink="/"
         ><svg
           id="logoNoon"
           width="173"
@@ -37,7 +37,6 @@
           <li class="nav-item dropdown myItems">
             <a
               class="nav-link dropdown-toggle"
-              href="#"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
@@ -62,10 +61,13 @@
           type="search"
           placeholder="What are you looking for?"
           aria-label="Search"
-          [value]="searchValue"
-          (input)="filter()"
+          (input)="filter($event)"
         />
-        <div id="dropdown" class="dropdown-content show">
+        <div
+          id="dropdown"
+          class="dropdown-content"
+          [ngClass]="{ show: searchValue }"
+        >
           <ng-container *ngFor="let product of products">
             <a (click)="ProductDetails(product.id)">{{ product.name }}</a>
           </ng-container>

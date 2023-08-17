@@ -15,11 +15,12 @@ export class HeaderComponent {
     private router: Router
   ) {}
 
-  filter() {
+  filter(ele: any) {
+    this.searchValue = ele.target.value;
+
     this.ProductsService.searchByName(this.searchValue).subscribe((data) => {
       this.products = data;
     });
-    console.log('working');
   }
 
   ProductDetails(id: number) {
