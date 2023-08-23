@@ -26,12 +26,11 @@ export class CategoryComponent implements OnInit {
 
       this.ProductsService.getByCategory(this.id).subscribe((data) => {
         this.products = data;
+        !this.products && this.location.back();
       });
     });
   }
-  ProductDetails(id: number) {
-    this.router.navigate(['/singleProduct', id]);
-  }
+
   productCategory(id: number) {
     this.router.navigate(['/productCategory', id]);
   }

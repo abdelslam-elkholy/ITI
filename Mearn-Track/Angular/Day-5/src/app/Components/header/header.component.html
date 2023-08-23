@@ -63,11 +63,7 @@
           aria-label="Search"
           (input)="filter($event)"
         />
-        <div
-          id="dropdown"
-          class="dropdown-content"
-          [ngClass]="{ show: searchValue }"
-        >
+        <div id="dropdown" class="dropdown-content show" *ngIf="searchValue">
           <ng-container *ngFor="let product of products">
             <a (click)="ProductDetails(product.id)">{{ product.name }}</a>
           </ng-container>
@@ -76,10 +72,8 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item myItems">
-            <a class="nav-link fw-bold open" aria-current="page" href="#"
-              >Sign In <i class="fa fa-user user-icon"></i>
-            </a>
+          <li class="nav-item myItems" style="cursor: pointer">
+            <app-signin-modal></app-signin-modal>
           </li>
           <li class="nav-item myItems">
             <a class="nav-link fw-bold" href="cart.html"

@@ -10,6 +10,12 @@ import { ProductsComponent } from './Components/products/products.component';
 import { CategoryComponent } from './Components/category/category.component';
 import { SingleProductComponent } from './Components/single-product/single-product.component';
 import { CarouselComponent } from './Components/carousel/carousel.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
+import { SigninModalComponent } from './Components/signin-modal/signin-modal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,8 +27,19 @@ import { CarouselComponent } from './Components/carousel/carousel.component';
     CategoryComponent,
     SingleProductComponent,
     CarouselComponent,
+    CategoriesListComponent,
+    SigninModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BsDropdownModule,
+    CarouselModule.forRoot(),
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

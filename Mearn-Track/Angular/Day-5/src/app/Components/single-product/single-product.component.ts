@@ -25,8 +25,10 @@ export class SingleProductComponent implements OnInit {
     this.activateRoute.paramMap.subscribe((param) => {
       this.id = Number(param.get('id')) || 0;
 
-      this.ProductsService.getProductByID(this.id).subscribe((data) => {
-        this.product = data;
+      this.ProductsService.getProductByID(this.id).subscribe({
+        next: (data) => (this.product = data),
+        error: (e) => this.location.back(),
+        complete: () => console.info('complete'),
       });
     });
   }

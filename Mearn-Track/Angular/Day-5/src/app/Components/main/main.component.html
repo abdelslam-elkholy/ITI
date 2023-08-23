@@ -1,21 +1,3 @@
 <app-carousel></app-carousel>
-<div class="container">
-  <ul class="nav nav-tabs categories">
-    <li class="nav-item">
-      <a class="nav-link active" href="home">
-        ALL CATOGARIES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="productCategory(1)"> Category 1 </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="productCategory(2)"> Category 2 </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="productCategory(3)"> Category 3 </a>
-    </li>
-  </ul>
-</div>
-
-<app-products></app-products>
+<app-categories-list></app-categories-list>
+<app-products [products]="products"></app-products>
