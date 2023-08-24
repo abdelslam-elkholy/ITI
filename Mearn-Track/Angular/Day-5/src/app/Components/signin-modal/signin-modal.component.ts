@@ -19,6 +19,8 @@ export class SigninModalComponent {
   modalRef!: BsModalRef;
   userForm!: FormGroup;
   submitted: boolean = false;
+  user: IUser = {} as IUser;
+
   constructor(
     private modalService: BsModalService,
     private formbuilder: FormBuilder,
@@ -42,20 +44,28 @@ export class SigninModalComponent {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  user: IUser = {} as IUser;
+
   addUser() {
-    this.userService.signUpUser(this.user).subscribe({
-      next: (user) => {
-        this.submitted = true;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        setTimeout(() => {
-          this.modalRef.hide();
-        }, 3000);
-      },
-    });
+    if (this.userForm.valid) {
+      this.user = {
+        id: Math.trunc(Math.random() * 100000000),
+        firstName: this.userForm.value.firstName.toLowerCase(),
+        lastName: this.userForm.value.lastName.toLowerCase(),
+        email: this.userForm.value.email.toLowerCase(),
+      };
+      this.userService.signUpUser(this.user).subscribe({
+        next: (user) => {
+          this.submitted = true;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          setTimeout(() => {
+            this.modalRef.hide();
+          }, 3000);
+        },
+      });
+    }
   }
 }
