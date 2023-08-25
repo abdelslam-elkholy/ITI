@@ -1,6 +1,8 @@
+import { IUser } from 'src/app/Models/iuser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '../Models/iuser';
+import { map } from 'rxjs/operators';
+
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 
@@ -21,5 +23,33 @@ export class UserService {
       JSON.stringify(newUser),
       this.http
     );
+  }
+  checkEmailExists(email: string): Observable<boolean> {
+    return this.httpClient.get<IUser[]>(`${environment.BaseApiURL}/users`).pipe(
+      map((users: IUser[]) => {
+        return users.some((user: IUser) => user.email === email);
+      })
+    );
+  }
+
+  login(email: string, password: string): Observable<boolean> {
+    return this.httpClient.get<IUser[]>(`${environment.BaseApiURL}/users`).pipe(
+      map((users: IUser[]) => {
+        const user = users.find((u: IUser) => u.email === email);
+        if (user && user.password === password) {
+          localStorage.setItem('loggedIn', 'true');
+          localStorage.setItem('loggedInUser', JSON.stringify(user));
+          return true;
+        }
+        return false;
+      })
+    );
+  }
+  logout(): void {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('loggedInUser');
+  }
+  isLoggedIn(): boolean {
+    return localStorage.getItem('loggedIn') === 'true';
   }
 }

@@ -20,6 +20,8 @@ export class SigninModalComponent {
   userForm!: FormGroup;
   submitted: boolean = false;
   user: IUser = {} as IUser;
+  loggedIn: boolean = false;
+  loggedInUser: IUser | null = null;
 
   constructor(
     private modalService: BsModalService,
@@ -28,44 +30,42 @@ export class SigninModalComponent {
     private router: Router
   ) {
     this.userForm = this.formbuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.pattern('[A-Za-z]{4,}')]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
-  get firstName() {
-    return this.userForm.get('firstName');
+  get email() {
+    return this.userForm.get('email');
   }
-  get lastName() {
-    return this.userForm.get('lastName');
+  get password() {
+    return this.userForm.get('password');
   }
-
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
-  addUser() {
-    if (this.userForm.valid) {
-      this.user = {
-        id: Math.trunc(Math.random() * 100000000),
-        firstName: this.userForm.value.firstName.toLowerCase(),
-        lastName: this.userForm.value.lastName.toLowerCase(),
-        email: this.userForm.value.email.toLowerCase(),
-      };
-      this.userService.signUpUser(this.user).subscribe({
-        next: (user) => {
-          this.submitted = true;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => {
-          setTimeout(() => {
-            this.modalRef.hide();
-          }, 3000);
-        },
-      });
-    }
+  login() {
+    const email = this.userForm.value.email;
+    const password = this.userForm.value.password;
+
+    this.userService.login(email, password).subscribe((success) => {
+      if (success) {
+        this.loggedIn = true;
+        this.loggedInUser = JSON.parse(
+          localStorage.getItem('loggedInUser') || '{}'
+        );
+        this.modalRef.hide();
+      } else {
+        this.email?.setErrors({ wrongCredentials: true });
+        this.password?.setErrors({ wrongCredentials: true });
+      }
+    });
+  }
+
+  logout() {
+    this.userService.logout();
+    this.loggedIn = false;
+    this.loggedInUser = null;
   }
 }

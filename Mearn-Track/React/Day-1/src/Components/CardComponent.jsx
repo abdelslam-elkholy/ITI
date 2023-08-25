@@ -10,7 +10,7 @@ function CardComponent({ title, color }) {
         textAlign: "center",
         backgroundColor: color,
       }}
-      className="d-flex justify-content-center align-items-center m-3"
+      className="d-flex justify-content-center align-items-center m-2"
     >
       <Card.Title className="text-light">{title}</Card.Title>
     </Card>

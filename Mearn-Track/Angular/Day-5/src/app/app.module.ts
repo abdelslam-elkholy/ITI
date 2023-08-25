@@ -16,6 +16,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CategoriesListComponent } from './Components/categories-list/categories-list.component';
 import { SigninModalComponent } from './Components/signin-modal/signin-modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SignupModalComponent } from './Components/signup-modal/signup-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CarouselComponent,
     CategoriesListComponent,
     SigninModalComponent,
+    SignupModalComponent,
   ],
   imports: [
     BrowserModule,

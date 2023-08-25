@@ -72,8 +72,16 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item myItems" style="cursor: pointer">
-            <app-signin-modal></app-signin-modal>
+          <li class="nav-item myItems" *ngIf="!loggedIn">
+            <app-signup-modal></app-signup-modal>
+          </li>
+          <li class="nav-item myItems" *ngIf="loggedIn">
+            <div class="nav-link fw-bold">
+              Welcome, {{ loggedInUser?.firstName }}!
+            </div>
+          </li>
+          <li class="nav-item myItems" *ngIf="loggedIn">
+            <button class="nav-link fw-bold" (click)="logout()">Logout</button>
           </li>
           <li class="nav-item myItems">
             <a class="nav-link fw-bold" href="cart.html"
