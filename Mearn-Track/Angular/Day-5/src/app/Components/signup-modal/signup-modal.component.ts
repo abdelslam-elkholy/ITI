@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { IUser } from 'src/app/Models/iuser';
+import { UserAuthService } from 'src/app/Services/user-auth.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class SignupModalComponent {
     private modalService: BsModalService,
     private formbuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private authService: UserAuthService
   ) {
     this.userForm = this.formbuilder.group(
       {
@@ -93,6 +95,7 @@ export class SignupModalComponent {
             this.userService.signUpUser(this.user).subscribe({
               next: (user) => {
                 this.submitted = true;
+                this.authService.login();
               },
               error: (err) => {
                 console.log(err);

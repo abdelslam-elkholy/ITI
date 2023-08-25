@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment.development';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +39,7 @@ export class UserService {
         if (user && user.password === password) {
           localStorage.setItem('loggedIn', 'true');
           localStorage.setItem('loggedInUser', JSON.stringify(user));
+
           return true;
         }
         return false;

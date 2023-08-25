@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { IUser } from 'src/app/Models/iuser';
+import { UserAuthService } from 'src/app/Services/user-auth.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class SigninModalComponent {
     private modalService: BsModalService,
     private formbuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private authService: UserAuthService
   ) {
     this.userForm = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -56,6 +58,7 @@ export class SigninModalComponent {
           localStorage.getItem('loggedInUser') || '{}'
         );
         this.modalRef.hide();
+        this.authService.login();
       } else {
         this.email?.setErrors({ wrongCredentials: true });
         this.password?.setErrors({ wrongCredentials: true });
