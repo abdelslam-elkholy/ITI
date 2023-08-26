@@ -11,14 +11,13 @@ export class UserAuthService {
   constructor() {}
 
   login(): void {
-    // Your login logic
-    // After successful login:
     this.isLoggedInSubject.next(true);
   }
 
   logout(): void {
-    // Your logout logic
-    // After logout:
     this.isLoggedInSubject.next(false);
+  }
+  isLoggedInUserName(): any {
+    return localStorage.getItem('loggedInUser');
   }
 }

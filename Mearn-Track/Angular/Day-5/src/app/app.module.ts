@@ -17,6 +17,8 @@ import { CategoriesListComponent } from './Components/categories-list/categories
 import { SigninModalComponent } from './Components/signin-modal/signin-modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SignupModalComponent } from './Components/signup-modal/signup-modal.component';
+import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SignupModalComponent } from './Components/signup-modal/signup-modal.com
     CategoriesListComponent,
     SigninModalComponent,
     SignupModalComponent,
+    AdminDashboardComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

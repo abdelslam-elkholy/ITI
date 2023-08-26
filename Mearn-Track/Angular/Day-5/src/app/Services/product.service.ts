@@ -32,4 +32,22 @@ export class ProductService {
       `${environment.BaseApiURL}/products/?categoryID=${id}`
     );
   }
+
+  addProduct(product: Iproduct): Observable<Iproduct> {
+    return this.httpClient.post<Iproduct>(
+      `${environment.BaseApiURL}/products`,
+      product
+    );
+  }
+  updateProduct(product: Iproduct): Observable<Iproduct> {
+    return this.httpClient.put<Iproduct>(
+      `${environment.BaseApiURL}/products/${product.id}`,
+      product
+    );
+  }
+  deleteProduct(id: number): Observable<void> {
+    return this.httpClient.delete<void>(
+      `${environment.BaseApiURL}/products/${id}`
+    );
+  }
 }

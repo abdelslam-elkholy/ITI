@@ -55,7 +55,7 @@
           </li>
         </ul>
       </div>
-      <form class="d-flex signIn" style="width: 60%">
+      <form class="d-flex signIn" style="width: 55%">
         <input
           class="form-control me-2 inpt-search"
           type="search"
@@ -72,18 +72,28 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item myItems" *ngIf="!loggedIn">
+          <li
+            class="nav-item myItems"
+            *ngIf="!loggedIn"
+            style="cursor: pointer"
+          >
             <app-signup-modal></app-signup-modal>
           </li>
-          <li class="nav-item myItems" *ngIf="loggedIn">
+          <li class="nav-item myItems" *ngIf="loggedIn" style="cursor: pointer">
             <div class="nav-link fw-bold">
               Welcome, {{ loggedInUser?.firstName }}!
             </div>
           </li>
-          <li class="nav-item myItems" *ngIf="loggedIn">
+
+          <li class="nav-item myItems" *ngIf="loggedIn" style="cursor: pointer">
             <button class="nav-link fw-bold" (click)="logout()">Logout</button>
           </li>
-          <li class="nav-item myItems">
+          <li class="nav-item myItems" style="cursor: pointer">
+            <div class="nav-link fw-bold" routerLink="/admin-dashboard">
+              Admin
+            </div>
+          </li>
+          <li class="nav-item myItems" style="cursor: pointer">
             <a class="nav-link fw-bold" href="cart.html"
               >Cart
 

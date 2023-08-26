@@ -132,6 +132,9 @@
                 <span *ngIf="password?.errors?.['minlength']">
                   Password must be at least 8 characters long
                 </span>
+                <span *ngIf="password?.errors?.['passwordMismatch']"
+                  >Passwords doesnt not match</span
+                >
               </span>
             </div>
           </div>
@@ -159,7 +162,7 @@
                   >Confirm Password is required</span
                 >
                 <span *ngIf="userForm.errors?.['passwordMismatch']"
-                  >Passwords do not match</span
+                  >Passwords doesnt not match</span
                 >
               </span>
             </div>

@@ -3,7 +3,6 @@ import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl,
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,16 +20,15 @@ export class SignupModalComponent {
   modalRef!: BsModalRef;
   userForm!: FormGroup;
   submitted: boolean = false;
-  user: IUser = {} as IUser;
 
   constructor(
     private modalService: BsModalService,
-    private formbuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router,
-    private authService: UserAuthService
+    private authService: UserAuthService,
+    private router: Router
   ) {
-    this.userForm = this.formbuilder.group(
+    this.userForm = this.formBuilder.group(
       {
         firstName: ['', [Validators.required, Validators.minLength(3)]],
         lastName: [
@@ -46,6 +44,7 @@ export class SignupModalComponent {
       }
     );
   }
+
   passwordMatchValidator(control: AbstractControl) {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
@@ -56,6 +55,7 @@ export class SignupModalComponent {
       control.get('confirmPassword')?.setErrors(null);
     }
   }
+
   get firstName() {
     return this.userForm.get('firstName');
   }
@@ -75,9 +75,11 @@ export class SignupModalComponent {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+
   closeModal() {
     this.modalRef.hide();
   }
+
   addUser() {
     if (this.userForm.valid) {
       this.userService.checkEmailExists(this.userForm.value.email).subscribe({
@@ -85,17 +87,16 @@ export class SignupModalComponent {
           if (emailExists) {
             this.email?.setErrors({ emailExists: true });
           } else {
-            this.user = {
+            const user: IUser = {
               id: Math.trunc(Math.random() * 100000000),
               firstName: this.userForm.value.firstName.toLowerCase(),
               lastName: this.userForm.value.lastName.toLowerCase(),
               email: this.userForm.value.email.toLowerCase(),
               password: this.userForm.value.password.toLowerCase(),
             };
-            this.userService.signUpUser(this.user).subscribe({
+            this.userService.signUpUser(user).subscribe({
               next: (user) => {
                 this.submitted = true;
-                this.authService.login();
               },
               error: (err) => {
                 console.log(err);
@@ -104,7 +105,7 @@ export class SignupModalComponent {
                 setTimeout(() => {
                   this.modalRef.hide();
                 }, 3000);
-                this.userService.login(this.user.email, this.user.password);
+                this.userService.login(user.email, user.password);
               },
             });
           }
