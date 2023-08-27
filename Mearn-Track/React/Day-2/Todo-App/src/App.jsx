@@ -10,13 +10,13 @@ const App = () => {
   const addTodo = (todo) => setTodos((prevTodos) => [...prevTodos, todo]);
 
   const deleteTodo = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id != id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const makeDone = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id == id ? { ...todo, checked: !todo.checked } : todo
+        todo.id == id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
@@ -26,7 +26,7 @@ const App = () => {
       <Header>
         <Form addNewTodo={addTodo} />
       </Header>
-      <TodoList />
+      <TodoList todos={todos} deleteTodo={deleteTodo} makeDone={makeDone} />
       <Footer />
     </>
   );
