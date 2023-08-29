@@ -8,4 +8,17 @@ const axiosInstance = axios.create({
   },
 });
 
+axiosInstance.interceptors.response.use(
+  (response) => {
+    if (response.data && Array.isArray(response.data)) {
+      response.data.results.forEach((movie) => {
+        movie.favorite = false;
+      });
+    }
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 export default axiosInstance;

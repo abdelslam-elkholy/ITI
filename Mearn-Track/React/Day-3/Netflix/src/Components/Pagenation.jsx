@@ -1,32 +1,23 @@
 import React from "react";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const range = [];
-  for (let i = 1; i <= totalPages; i++) {
-    range.push(i);
-  }
+import Typography from "@mui/material/Typography";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
+export default function PaginationList({ count, page, handleChange }) {
   return (
-    <nav className="flex justify-center mt-8">
-      <ul className="pagination">
-        {range.map((pageNumber) => (
-          <li
-            key={pageNumber}
-            className={`pagination-item ${
-              pageNumber === currentPage ? "active" : ""
-            }`}
-          >
-            <button
-              className="pagination-link"
-              onClick={() => onPageChange(pageNumber)}
-            >
-              {pageNumber}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="w-full-screen text-slate-100 flex justify-center">
+      <Stack spacing={12} color="primary">
+        <Typography></Typography>
+        <Pagination
+          showLastButton
+          color="primary"
+          size="large"
+          count={count}
+          page={page}
+          onChange={handleChange}
+        />
+      </Stack>
+    </div>
   );
-};
-
-export default Pagination;
+}

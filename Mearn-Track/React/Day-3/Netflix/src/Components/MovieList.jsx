@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
 import axiosInstance from "./../AxiosConfig/instance";
 import MovieCard from "./Movie";
 import ReactPaginate from "react-js-pagination";
+import PaginationList from "./Pagenation";
 
 const MovieList = () => {
-  var [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const moviesPerPage = 9; // Number of movies per page
-  useEffect(function () {
-    axiosInstance
-      .get("/movie/popular")
-      .then((res) => {
-        console.log(res.data);
-        setMovies(res.data.results);
-        console.log("movide = " + movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  const indexOfLastMovie = currentPage * moviesPerPage;
-  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState();
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handleChange = (e, value) => {
+    setPage(value);
   };
+
+  useEffect(
+    function () {
+      axiosInstance
+        .get("/movie/popular", { params: { page } })
+        .then((res) => {
+          console.log(res.data);
+          setMovies(res.data.results);
+          setCount(res.data.total_pages);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    [page]
+  );
+
   return (
     <div className="bg-gray-900 min-h-screen p-5">
       <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-20">
@@ -40,23 +42,11 @@ const MovieList = () => {
             voteAverage={movie.vote_average}
             adult={movie.adult}
             releaseDate={movie.release_date}
+            favourite={movie.favorite}
           />
         ))}
       </div>
-      <div className="flex  justify-center mt-8">
-        <ReactPaginate
-          activePage={currentPage}
-          itemsCountPerPage={moviesPerPage}
-          totalItemsCount={movies.length}
-          pageRangeDisplayed={5} // Adjust the number of visible page numbers
-          onChange={handlePageChange}
-          itemClass="px-3 py-1 text-gray-300"
-          activeClass="bg-gray-800 text-white"
-          prevPageText="Previous"
-          nextPageText="Next"
-          hideFirstLastPages={true}
-        />
-      </div>
+      <PaginationList count={count} page={page} handleChange={handleChange} />
     </div>
   );
 };

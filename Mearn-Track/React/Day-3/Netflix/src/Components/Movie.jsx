@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoHeart } from "react-icons/io5";
 
 const MovieCard = ({
   title,
@@ -10,7 +11,12 @@ const MovieCard = ({
   adult,
   releaseDate,
   id,
+  favourite,
 }) => {
+  const [isFilled, setIsFilled] = useState(favourite);
+  const toggleHeart = () => {
+    setIsFilled((prev) => !prev);
+  };
   return (
     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
       <img className="w-full h-97 object-cover" src={imageUrl} alt={title} />
@@ -31,6 +37,12 @@ const MovieCard = ({
           )}
         </div>
         <p className="text-gray-400 text-sm">{releaseDate}</p>
+        <IoHeart
+          className={`text-xl w-10 h-20 ${
+            isFilled ? "text-red-500" : "text-gray-500"
+          }`}
+          onClick={toggleHeart}
+        />
       </div>
       <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded  mt-auto">
         <Link to={`/movie/${id}`}>Watch Now</Link>
