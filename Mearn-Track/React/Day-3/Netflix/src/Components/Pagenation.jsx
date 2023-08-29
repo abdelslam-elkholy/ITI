@@ -7,11 +7,9 @@ import Stack from "@mui/material/Stack";
 export default function PaginationList({ count, page, handleChange }) {
   return (
     <div className="w-full-screen text-slate-100 flex justify-center">
-      <Stack spacing={12} color="primary">
+      <Stack spacing={4} color="primary">
         <Typography></Typography>
         <Pagination
-          showLastButton
-          color="primary"
           size="large"
           count={count}
           page={page}

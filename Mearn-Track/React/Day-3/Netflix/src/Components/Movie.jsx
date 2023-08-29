@@ -2,50 +2,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoHeart } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../store/slices/favourite";
 
-const MovieCard = ({
-  title,
-  imageUrl,
-  overview,
-  voteAverage,
-  adult,
-  releaseDate,
-  id,
-  favourite,
-}) => {
-  const [isFilled, setIsFilled] = useState(favourite);
-  const toggleHeart = () => {
-    setIsFilled((prev) => !prev);
+const MovieCard = ({ movie }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favourites.favourites);
+  const isFavorite = favorites.find((mov) => mov.id === movie.id);
+
+  const handleFavorite = () => {
+    dispatch(toggleFavorite(movie));
   };
+
   return (
     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
-      <img className="w-full h-97 object-cover" src={imageUrl} alt={title} />
+      <img
+        className="w-full h-50 object-cover"
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        alt={movie.title}
+      />
       <div className="px-4 py-4">
-        <h2 className="text-xl font-semibold text-white mb-2">{title}</h2>
+        <h2 className="text-xl font-semibold text-white mb-2">{movie.title}</h2>
         <p className="text-gray-400 text-sm mb-2 h-20 overflow-hidden">
-          {overview}
+          {movie.overview}
         </p>
         <div className="flex items-center mb-2">
           <span className="text-yellow-400 mr-1">&#9733;</span>
-          <span className="text-white">{voteAverage}</span>
+          <span className="text-white">{movie.vote_average}</span>
         </div>
-        <div className="mb-2">
-          {adult && (
-            <span className="bg-red-600 text-white font-semibold py-1 px-2 rounded">
-              Adult
-            </span>
-          )}
-        </div>
-        <p className="text-gray-400 text-sm">{releaseDate}</p>
+
+        <p className="text-gray-400 text-sm">{movie.release_date}</p>
         <IoHeart
           className={`text-xl w-10 h-20 ${
-            isFilled ? "text-red-500" : "text-gray-500"
+            isFavorite ? "text-red-500" : "text-gray-500"
           }`}
-          onClick={toggleHeart}
+          onClick={handleFavorite}
         />
       </div>
       <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded  mt-auto">
-        <Link to={`/movie/${id}`}>Watch Now</Link>
+        <Link to={`/movie/${movie.id}`}>Watch Now</Link>
       </button>
     </div>
   );

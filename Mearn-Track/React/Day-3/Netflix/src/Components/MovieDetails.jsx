@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../AxiosConfig/instance";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { IoHeart } from "react-icons/io5";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const { id } = useParams();
+
+  const navigate = useNavigate();
   useEffect(() => {
-    axiosInstance.get(`/movie/${id}`).then((res) => {
-      setMovie(res.data);
-      console.log(res.data);
-    });
-  });
+    axiosInstance
+      .get(`/movie/${id}`)
+      .then((res) => {
+        setMovie(res.data);
+        console.log(res.data);
+      })
+      .catch(() => navigate(-1));
+  }, [id]);
 
   const renderStars = () => {
     const rating = Math.round(movie.vote_average / 2);
@@ -39,6 +45,12 @@ const MovieDetails = () => {
             className="w-96 h-auto rounded-lg shadow-md"
           />
         </div>
+        <IoHeart
+          className={`text-xl w-10 h-20 ${
+            movie.favorite ? "text-red-500" : "text-gray-500"
+          }`}
+          // onClick={toggleHeart}
+        />
         <div className="ml-8">
           <h1 className="text-4xl font-semibold mb-2">{movie.title}</h1>
           {movie.belongs_to_collection && (

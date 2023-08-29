@@ -31,7 +31,7 @@ function Header() {
   const handleItemClick = (id) => {
     console.log("im workin after click");
     navigate(`/movie/${id}`);
-    // setShowDropdown(false);
+    setQuery("");
   };
 
   return (
@@ -40,9 +40,12 @@ function Header() {
       style={{ backgroundColor: primaryColor }}
     >
       <div className="flex items-center space-x-2">
-        <span className="text-6xl">🍿</span>
+        <Link to={"/"}>
+          {" "}
+          <span className="text-6xl">🍿</span>
+        </Link>
         <h1 className="text-3xl font-semibold" style={{ color: redColor }}>
-          Netflix
+          <Link to={"/"}> Netflix </Link>
         </h1>
       </div>
       <nav className="flex space-x-6"></nav>
@@ -55,18 +58,17 @@ function Header() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setShowDropdown(true)}
-          onBlur={() => setShowDropdown(false)}
+          // onBlur={() => setShowDropdown(false)}
         />
         {showDropdown && searchResults && (
-          <div
-            style={{ zIndex: "100" }}
-            className="absolute left-0 mt-2 w-full bg-gray-600 border border-gray-700 rounded-lg shadow-lg"
-          >
+          <ul className="absolute left-0 mt-2 w-full bg-gray-600 border border-gray-700 rounded-lg shadow-lg">
             {searchResults.map((result) => (
               <li
-                style={{ zIndex: "100" }}
+                onClick={() => {
+                  handleItemClick(result.id);
+                }}
                 key={result.id}
-                className="px-4 py-2 cursor-pointer hover:bg-gray-700 list-style-none"
+                className="px-4 py-2 cursor-pointer hover:bg-gray-700"
               >
                 {/* <Link
                   className="text-gray-200 hover:text-white"
@@ -74,19 +76,12 @@ function Header() {
                 >
                   {result.title}
                 </Link> */}
-                <span
-                  onClick={(e) => {
-                    console.log("working");
-                    e.preventDefault();
-                    handleItemClick(result.id);
-                  }}
-                  className="text-gray-200 hover:text-white"
-                >
+                <span className="text-gray-200 hover:text-white">
                   {result.title}
                 </span>
               </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </header>
