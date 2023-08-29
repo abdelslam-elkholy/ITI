@@ -1,15 +1,9 @@
 import React from "react";
-import Header from "./Components/Header";
-import MovieList from "./Components/MovieList";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
 
-const App = () => {
-  return (
-    <>
-      <Header />
-
-      <MovieList />
-    </>
-  );
-};
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;
