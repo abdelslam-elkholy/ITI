@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../AxiosConfig/instance";
+import { IoHeart } from "react-icons/io5";
 
 function Header() {
   const [query, setQuery] = useState("");
@@ -84,6 +85,10 @@ function Header() {
           </ul>
         )}
       </div>
+      <IoHeart
+        className={`text-xl w-10 h-20 text-red-500`}
+        onClick={() => navigate("/favourites")}
+      />
     </header>
   );
 }
