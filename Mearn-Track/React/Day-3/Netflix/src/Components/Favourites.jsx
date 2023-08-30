@@ -1,15 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../store/slices/favourite";
 
 const Favourites = () => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.favourites.favourites);
 
+  const removeItem = (item) => {
+    dispatch(toggleFavorite(item));
+  };
+
   return (
     <div className="bg-gray-600 min-h-screen flex justify-center">
-      <ul className=" p-20 w-1/2 ">
-        {movies.map((movie) => {
-          return (
+      {movies.length > 0 ? (
+        <ul className=" p-20 w-3/4 ">
+          {movies.map((movie) => (
             <li
               key={movie.id}
               className=" bg-gray-800 flex p-4 border-b border-gray-600"
@@ -28,13 +33,21 @@ const Favourites = () => {
                   <span className="text-gray-500">{movie.release_date}</span>
                 </p>
               </div>
-              <button className="bg-gray-900 h-8 w-8 text-gray-100 p-1 text-center ms-auto">
+              <button
+                className="bg-gray-900 h-8 w-8 text-gray-100 p-1 text-center ms-auto"
+                onClick={() => removeItem(movie)}
+              >
                 –{" "}
               </button>
             </li>
-          );
-        })}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-gray-50 text-xl mt-32 ">
+          {" "}
+          You hadnt Added any movies yet
+        </p>
+      )}
     </div>
   );
 };

@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../AxiosConfig/instance";
 import { IoHeart } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+
   const navigate = useNavigate();
+  const favourites = useSelector((state) => state.favourites.favourites);
 
   const primaryColor = "#6741d9";
   const primaryLightColor = "#7950f2";
@@ -85,10 +88,15 @@ function Header() {
           </ul>
         )}
       </div>
-      <IoHeart
-        className={`text-xl w-10 h-20 text-red-500`}
-        onClick={() => navigate("/favourites")}
-      />
+      <div className="flex items-center ">
+        <IoHeart
+          className={`text-xl  text-red-500 w-10 h-20`}
+          onClick={() => navigate("/favourites")}
+        />
+        {favourites.length > 0 && (
+          <span className="text-xl text-gray-50">{favourites.length}</span>
+        )}
+      </div>
     </header>
   );
 }
