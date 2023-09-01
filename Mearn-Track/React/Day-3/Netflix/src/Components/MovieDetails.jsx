@@ -45,12 +45,7 @@ const MovieDetails = () => {
             className="w-96 h-auto rounded-lg shadow-md"
           />
         </div>
-        <IoHeart
-          className={`text-xl w-10 h-20 ${
-            movie.favorite ? "text-red-500" : "text-gray-500"
-          }`}
-          // onClick={toggleHeart}
-        />
+
         <div className="ml-8">
           <h1 className="text-4xl font-semibold mb-2">{movie.title}</h1>
           {movie.belongs_to_collection && (

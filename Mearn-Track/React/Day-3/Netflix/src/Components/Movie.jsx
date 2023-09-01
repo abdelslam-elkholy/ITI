@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
   return (
     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
       <img
-        className="w-full h-[30rem] object-cover"
+        className="w-full h-[34rem] object-cover"
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
       />

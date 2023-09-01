@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../AxiosConfig/instance";
 import { IoHeart } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import { languageContext } from "../context/languages";
 
 function Header() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const { language, setLanguage } = useContext(languageContext);
 
   const navigate = useNavigate();
   const favourites = useSelector((state) => state.favourites.favourites);
@@ -89,6 +92,14 @@ function Header() {
         )}
       </div>
       <div className="flex items-center ">
+        <span
+          onClick={() =>
+            language == "en" ? setLanguage("ar") : setLanguage("en")
+          }
+          className="text-4xl cursor-pointer mr-20"
+        >
+          {language == "en" ? "🇺🇸" : "🇪🇬"}
+        </span>
         <IoHeart
           className={`text-xl  text-red-500 w-10 h-20`}
           onClick={() => navigate("/favourites")}
