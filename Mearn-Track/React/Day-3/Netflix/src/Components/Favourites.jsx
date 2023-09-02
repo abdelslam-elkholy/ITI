@@ -1,13 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../store/slices/favourite";
+import { useNavigate } from "react-router-dom";
 
 const Favourites = () => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.favourites.favourites);
-
+  const navigate = useNavigate();
   const removeItem = (item) => {
     dispatch(toggleFavorite(item));
+  };
+
+  const navigateToMovie = (id) => {
+    navigate(`/movie/${id}`);
   };
 
   return (
@@ -22,7 +27,8 @@ const Favourites = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt=""
-                className="rounded h-32 w-24 m-2"
+                className="rounded h-32 w-24 m-2 cursor-pointer"
+                onClick={() => navigateToMovie(movie.id)}
               />
               <div className=" m-8">
                 <h3 className="text-xl text-gray-200">{movie.title}</h3>

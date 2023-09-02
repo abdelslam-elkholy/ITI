@@ -36,7 +36,6 @@ function Header() {
   }, [query]);
 
   const handleItemClick = (id) => {
-    console.log("im workin after click");
     navigate(`/movie/${id}`);
     setQuery("");
   };
