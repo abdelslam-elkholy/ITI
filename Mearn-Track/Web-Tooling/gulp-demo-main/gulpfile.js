@@ -1,9 +1,9 @@
-const { src, dest } = require("gulp");
+const { src, dest, series, parallel } = require("gulp");
 const htmlmin = require("gulp-html-minifier-terser");
 const cleanCSS = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const terser = require("gulp-terser");
-const stripDebug = require("gulp-strip-debug");
+// const stripDebug = require("gulp-strip-debug");
 const optimizeImages = require("gulp-optimize-images");
 
 const sorce = {
@@ -30,7 +30,6 @@ exports.jsTask = () => {
     sourcemaps: true,
   })
     .pipe(concat("script.min.js"))
-    .pipe(stripDebug())
     .pipe(terser())
     .pipe(dest(dist.js, { sourcemaps: "." }));
 };
@@ -61,3 +60,7 @@ exports.imgTask = () => {
     })
   );
 };
+
+exports.default = series(
+  parallel(exports.htmlTask, exports.cssTask, exports.jsTask, exports.imgTask)
+);

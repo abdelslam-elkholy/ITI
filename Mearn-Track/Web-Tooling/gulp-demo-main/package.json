@@ -10,7 +10,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-html-minifier-terser": "^7.1.0",
     "gulp-optimize-images": "^1.1.5",
-    "gulp-strip-debug": "^5.0.0",
     "gulp-terser": "^2.1.0",
     "gulp.spritesmith": "^6.13.0"
   },
